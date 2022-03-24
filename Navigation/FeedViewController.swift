@@ -30,7 +30,6 @@ class FeedViewController: UIViewController {
         postButton.frame = CGRect(x: 10, y: 90, width: 150, height: 50)
         postButton.layer.cornerRadius = 20
         postButton.addTarget(self, action: #selector(self.postButtonAction), for: .touchUpInside)
-        //postButton.autoresizingMask = [.flexibleRightMargin, .flexibleLeftMargin, .flexibleBottomMargin]
 
         self.view.addSubview(postButton)
     }

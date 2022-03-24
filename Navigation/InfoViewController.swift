@@ -16,7 +16,6 @@ class InfoViewController: UIViewController {
 
         let alertButton = UIButton(type: .system)
         alertButton.frame.size = CGSize(width: 150, height: 50)
-        //alertButton.bounds =
         alertButton.backgroundColor = .yellow
         alertButton.setTitle("Post a photo", for: .normal)
         alertButton.center = view.center
@@ -33,12 +32,12 @@ class InfoViewController: UIViewController {
             print("Cancelled")
         }
 
-        let OKAlertAction = UIAlertAction(title: "Post", style: .default) { (action) -> Void in
+        let okAlertAction = UIAlertAction(title: "Post", style: .default) { (action) -> Void in
             print("Posted")
         }
 
         myAlertController.addAction(cancelAlertAction)
-        myAlertController.addAction(OKAlertAction)
+        myAlertController.addAction(okAlertAction)
 
         self.present(myAlertController, animated: true, completion: nil)
     }
