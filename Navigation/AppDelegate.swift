@@ -24,9 +24,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let profileNavigationController = UINavigationController(rootViewController: profileViewController)
 
         tabBarController.viewControllers = [feedNavigationController, profileNavigationController]
+        tabBarController.tabBar.backgroundColor = .white
+        tabBarController.tabBar.isTranslucent = false
 
         feedNavigationController.setViewControllers([feedViewController], animated: true)
+        feedNavigationController.tabBarItem.image = UIImage(systemName: "house.fill")
+        feedNavigationController.navigationBar.isTranslucent = false
+        feedNavigationController.navigationBar.barTintColor = .white
+        
         profileNavigationController.setViewControllers([profileViewController], animated: true)
+        profileNavigationController.tabBarItem.image = UIImage(systemName: "person.fill")
+        
+
+        tabBarController.tabBar.isTranslucent = false
+        tabBarController.tabBar.barTintColor = .white
+        print(tabBarController.tabBar.bounds.height)
+        print(profileNavigationController.navigationBar.bounds.height)
         
         self.window?.makeKeyAndVisible()
         return true
