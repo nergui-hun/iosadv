@@ -55,7 +55,7 @@ class ProfileHeaderView: UIView {
         let profileImageView: UIImageView = {
             let imageView = UIImageView()
             imageView.image = UIImage(named: "bald")
-            imageView.frame = CGRect(x: 16, y: self.safeAreaInsets.top, width: 130, height: 130)
+            imageView.frame = CGRect(x: 16, y: 16, width: 130, height: 130)
             imageView.layer.borderWidth = 3
             imageView.layer.borderColor = UIColor.white.cgColor
             imageView.layer.cornerRadius = imageView.frame.height/2

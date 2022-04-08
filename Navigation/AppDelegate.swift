@@ -29,8 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         feedNavigationController.setViewControllers([feedViewController], animated: true)
         feedNavigationController.tabBarItem.image = UIImage(systemName: "house.fill")
-        feedNavigationController.navigationBar.isTranslucent = false
-        feedNavigationController.navigationBar.barTintColor = .white
         
         profileNavigationController.setViewControllers([profileViewController], animated: true)
         profileNavigationController.tabBarItem.image = UIImage(systemName: "person.fill")
