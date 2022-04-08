@@ -25,8 +25,6 @@ class ProfileViewController: UIViewController {
         profileHeaderView.backgroundColor = .lightGray
         profileHeaderView.layer.borderColor = UIColor.black.cgColor
         profileHeaderView.layer.borderWidth = 1
-        profileHeaderView.frame = CGRect(x: 0, y: 87, width: .max, height: 670)
-
-        print(profileHeaderView.safeAreaInsets)
+        profileHeaderView.frame = CGRect(x: 0, y: 91, width: .max, height: 670)
     }
 }

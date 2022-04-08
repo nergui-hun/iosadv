@@ -21,14 +21,22 @@ class FeedViewController: UIViewController {
 
         title = "Feed"
         
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = .lightGray
+        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.borderWidth = 1
 
         let postButton = UIButton(type: UIButton.ButtonType.system)
         postButton.setTitle("Posts", for: .normal)
         postButton.setTitleColor(.white, for: .normal)
-        postButton.backgroundColor = .systemTeal
-        postButton.frame = CGRect(x: 16, y: 300, width: UIScreen.main.bounds.width - 16 - 16, height: 50)
-        postButton.layer.cornerRadius = 20
+        postButton.backgroundColor = .systemBlue
+        postButton.frame = CGRect(x: 16, y: 380, width: UIScreen.main.bounds.width - 16 - 16, height: 50)
+        postButton.layer.cornerRadius = 4
+
+        postButton.layer.shadowOffset = CGSize(width: 4, height: 4)
+        postButton.layer.shadowRadius = 4
+        postButton.layer.shadowColor = UIColor.black.cgColor
+        postButton.layer.shadowOpacity = 0.7
+
         postButton.addTarget(self, action: #selector(self.postButtonAction), for: .touchUpInside)
 
         self.view.addSubview(postButton)

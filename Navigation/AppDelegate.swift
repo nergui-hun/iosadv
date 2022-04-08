@@ -33,12 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         profileNavigationController.setViewControllers([profileViewController], animated: true)
         profileNavigationController.tabBarItem.image = UIImage(systemName: "person.fill")
         
-
-        tabBarController.tabBar.isTranslucent = false
-        tabBarController.tabBar.barTintColor = .white
-        print(tabBarController.tabBar.bounds.height)
-        print(profileNavigationController.navigationBar.bounds.height)
-        
         self.window?.makeKeyAndVisible()
         return true
     }
