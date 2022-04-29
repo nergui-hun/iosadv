@@ -18,17 +18,18 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "Feed"
-        
-        view.backgroundColor = .white
-        view.layer.borderColor = UIColor.black.cgColor
-        view.layer.borderWidth = 1
+
         
         setupView()
     }
     
     func setupView() {
+        title = "Feed"
+        view.backgroundColor = .white
+        view.layer.borderColor = UIColor.lightGray.cgColor
+        view.layer.borderWidth = 0.5
+
+
         let postButton: UIButton = {
             let button = UIButton()
             button.backgroundColor = .systemBlue

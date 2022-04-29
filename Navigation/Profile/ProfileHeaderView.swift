@@ -10,83 +10,17 @@ import UIKit
 
 class ProfileHeaderView: UIView {
 
-    private let statusLabel = UILabel()
-    private let statusTextField = UITextField()
-    private let avatarImageView = UIImageView()
-    private let fullNameLabel = UILabel()
-    private let setStatusButton = UIButton(type: .system)
-    private let setTitleButton = UIButton(type: .system)
-
-    private var statusButtonTopConstraint: NSLayoutConstraint?
-
     override init(frame: CGRect) {
         super.init(frame: frame)
+        addSubviews()
+        setConstraints()
+    }
 
-        statusLabel.translatesAutoresizingMaskIntoConstraints = false
-        statusLabel.backgroundColor = .lightGray
-        statusLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        statusLabel.textColor = .gray
-        statusLabel.text = "Waiting for something..."
-        self.addSubview(statusLabel)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
-        statusTextField.frame = CGRect()
-        statusTextField.backgroundColor = .white
-        statusTextField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        statusTextField.textColor = .black
-        statusTextField.layer.cornerRadius = 12
-        statusTextField.layer.borderWidth = 1
-        statusTextField.layer.borderColor = UIColor.black.cgColor
-        statusTextField.isHidden = true
-        statusTextField.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(statusTextField)
-
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer()
-        tap.addTarget(self, action: #selector(cancelEditing))
-        tap.cancelsTouchesInView = false
-        self.addGestureRecognizer(tap)
-
-        avatarImageView.image = UIImage(named: "bald")
-        avatarImageView.layer.borderWidth = 3
-        avatarImageView.layer.borderColor = UIColor.white.cgColor
-        avatarImageView.layer.cornerRadius = 65
-        avatarImageView.contentMode = UIView.ContentMode.scaleAspectFill
-        avatarImageView.clipsToBounds = true
-        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(avatarImageView)
-
-        fullNameLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        fullNameLabel.textColor = .black
-        fullNameLabel.text = "Bald Cat"
-        fullNameLabel.numberOfLines = 0
-        fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(fullNameLabel)
-
-        setStatusButton.backgroundColor = .systemBlue
-        setStatusButton.layer.cornerRadius = 4
-        setStatusButton.layer.shadowOffset = CGSize(width: 4, height: 4)
-        setStatusButton.layer.shadowRadius = 4
-        setStatusButton.layer.shadowColor = UIColor.black.cgColor
-        setStatusButton.layer.shadowOpacity = 0.7
-        setStatusButton.tintColor = .white
-        setStatusButton.setTitle("Show status", for: .normal)
-        setStatusButton.translatesAutoresizingMaskIntoConstraints = false
-        setStatusButton.addTarget(self, action: #selector(self.buttonPressed), for: .touchUpInside)
-        self.addSubview(setStatusButton)
-
-        setTitleButton.backgroundColor = .systemBlue
-        setTitleButton.layer.cornerRadius = 4
-        setTitleButton.layer.shadowOffset = CGSize(width: 4, height: 4)
-        setTitleButton.layer.shadowRadius = 4
-        setTitleButton.layer.shadowColor = UIColor.black.cgColor
-        setTitleButton.layer.shadowOpacity = 0.7
-        setTitleButton.tintColor = .white
-        setTitleButton.setTitle("Set title", for: .normal)
-        setTitleButton.translatesAutoresizingMaskIntoConstraints = false
-        //setTitleButton.addTarget(self, action: #selector(self.buttonPressed), for: .touchUpInside)
-        self.addSubview(setTitleButton)
-
-        self.statusButtonTopConstraint = self.setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 16)
-        self.statusButtonTopConstraint?.priority = UILayoutPriority(999)
+    private func setConstraints() {
 
         NSLayoutConstraint.activate([
             avatarImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
@@ -122,45 +56,133 @@ class ProfileHeaderView: UIView {
         ].compactMap({ $0 }))
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    private func addSubviews() {
+        self.addSubview(statusLabel)
+        self.addSubview(statusTextField)
+        self.addGestureRecognizer(tap)
+        self.addSubview(avatarImageView)
+        self.addSubview(fullNameLabel)
+        self.addSubview(setStatusButton)
+        self.addSubview(setTitleButton)
+        self.statusButtonTopConstraint = self.setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 16)
+        self.statusButtonTopConstraint?.priority = UILayoutPriority(999)
     }
-
     
 
     @objc func buttonPressed(_ sender: UIButton!) {
 
         let statusButtonTitle: String = sender.currentTitle!
         if(statusButtonTitle == "Show status") {
-            if let text = statusLabel.text {
-                print(text)
-            }
 
             sender.setTitle("Set status", for: .normal)
             self.statusButtonTopConstraint?.isActive = false
             self.statusButtonTopConstraint = self.setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant:  36)
             NSLayoutConstraint.activate([self.statusButtonTopConstraint].compactMap({ $0 }))
             self.statusTextField.isHidden = false
+            statusTextField.text = statusLabel.text
             statusTextField.becomeFirstResponder()
 
         } else {
-            if(statusTextField.hasText) {
-                statusLabel.text = statusTextField.text
-                sender.setTitle("Show status", for: .normal)
-                self.statusButtonTopConstraint?.isActive = true
-                self.statusButtonTopConstraint = self.setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant:  16)
-                NSLayoutConstraint.activate([self.statusButtonTopConstraint].compactMap({ $0 }))
-                statusTextField.isHidden = true
-            }
+            statusLabel.text = statusTextField.text
+            sender.setTitle("Show status", for: .normal)
+
+            self.endEditing(true)
+            self.setStatusButton.setTitle("Show status", for: .normal)
+            self.statusButtonTopConstraint?.isActive = true
+            self.statusButtonTopConstraint = self.setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant:  16)
+            NSLayoutConstraint.activate([self.statusButtonTopConstraint].compactMap({ $0 }))
+            statusTextField.isHidden = true
         }
     }
 
     @objc func cancelEditing() {
         self.endEditing(true)
-        self.setStatusButton.setTitle("Show status", for: .normal)
-        self.statusButtonTopConstraint?.isActive = true
-        self.statusButtonTopConstraint = self.setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant:  16)
-        NSLayoutConstraint.activate([self.statusButtonTopConstraint].compactMap({ $0 }))
-        statusTextField.isHidden = true
     }
+
+//================================VIEW ELEMENTS===============================//
+
+    private let statusLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .lightGray
+        label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.textColor = .gray
+        label.text = "Waiting for something..."
+        return label
+    }()
+
+    private let statusTextField: UITextField = {
+        let textField = UITextField()
+        textField.frame = CGRect()
+        textField.backgroundColor = .white
+        textField.font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        textField.textColor = .black
+        textField.layer.cornerRadius = 12
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.black.cgColor
+        textField.isHidden = true
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+
+    private let avatarImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "bald")
+        imageView.layer.borderWidth = 3
+        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.cornerRadius = 65
+        imageView.contentMode = UIView.ContentMode.scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
+    private let fullNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        label.textColor = .black
+        label.text = "Bald Cat"
+        label.numberOfLines = 0
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    private lazy var setStatusButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 4
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.layer.shadowRadius = 4
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.7
+        button.tintColor = .white
+        button.setTitle("Show status", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        return button
+    }()
+
+    private let setTitleButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 4
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.layer.shadowRadius = 4
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.7
+        button.tintColor = .white
+        button.setTitle("Set title", for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    private lazy var tap: UITapGestureRecognizer = {
+        let tapGesture = UITapGestureRecognizer()
+        tapGesture.addTarget(self, action: #selector(cancelEditing))
+        tapGesture.cancelsTouchesInView = false
+        return tapGesture
+    }()
+
+    private var statusButtonTopConstraint: NSLayoutConstraint?
+
 }
