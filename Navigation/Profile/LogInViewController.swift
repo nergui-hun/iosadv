@@ -90,7 +90,6 @@ class LogInViewController: UIViewController {
     }
 
     @objc func kbdShow(notification: NSNotification) {
-        print("----------------------------------")
         if let kbdSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             logInTextFieldsScrollView.contentInset.bottom = kbdSize.height
             logInTextFieldsScrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: kbdSize.height, right: 0)
