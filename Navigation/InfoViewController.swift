@@ -25,7 +25,7 @@ class InfoViewController: UIViewController {
         self.view.addSubview(alertButton)
     }
 
-    @IBAction func alertButtonAction(_ sender: UIButton!) {
+    @objc func alertButtonAction(_ sender: UIButton!) {
         let myAlertController = UIAlertController(title: "Think twice!", message: "Do you really want everyone to see how ugly you are?", preferredStyle: .alert)
 
         let cancelAlertAction = UIAlertAction(title: "Cancel", style: .default) { (action) -> Void in

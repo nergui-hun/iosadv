@@ -8,18 +8,10 @@
 import Foundation
 import UIKit
 
-struct Post {
-    let title: String
-}
-
 class FeedViewController: UIViewController {
-    
-    let myPost = Post(title: "My post")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         setupView()
     }
     
@@ -28,6 +20,7 @@ class FeedViewController: UIViewController {
         view.backgroundColor = .white
         view.layer.borderColor = UIColor.lightGray.cgColor
         view.layer.borderWidth = 0.5
+        self.navigationController?.navigationBar.isHidden = true
 
 
         let postButton: UIButton = {
@@ -80,13 +73,11 @@ class FeedViewController: UIViewController {
             stackView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 16),
             stackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -16),
             stackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
-        ].compactMap({ $0 }))
-        
+        ])
     }
     
     @objc func postButtonAction(_ sender: UIButton!) {
         let postViewController = PostViewController()
-        postViewController.post = myPost
         self.navigationController?.pushViewController(postViewController, animated: true)
     }
 }
