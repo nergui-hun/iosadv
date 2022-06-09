@@ -11,7 +11,14 @@ import UIKit
 class PostTableViewCell: UITableViewCell {
 
 
-    //==========================VIEW ELEMENTS=================================//
+    //==========================PROPERTIES=================================//
+    /*
+     1. private let authorLabel: UILabel
+     2. private let postImageView: UIImageView
+     3. private let descriptionLabel: UILabel
+     4. private let likesLabel: UILabel
+     5. private let viewsLabel: UILabel
+     */
     private let authorLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)

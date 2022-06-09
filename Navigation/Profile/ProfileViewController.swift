@@ -10,28 +10,50 @@ import UIKit
 class ProfileViewController: UIViewController {
 
     //===================PROPERTIES=====================//
+    /*
+     1. var dataSource: [Post]
+     2. let profileHeaderView: ProfileHeaderView
+     3. private lazy var tableView: UITableView
+     */
     var dataSource: [Post] = []
 
     let profileHeaderView: ProfileHeaderView = {
         let phView = ProfileHeaderView()
         phView.translatesAutoresizingMaskIntoConstraints = false
+        phView.avatarImageView.isUserInteractionEnabled = true
         return phView
     }()
 
-    private lazy var postTableView: UITableView = {
-        let tableView = UITableView()
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "defaultCell")
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: "photoCell")
         tableView.register(PostTableViewCell.self, forCellReuseIdentifier: "postCell")
+        
+        tableView.sectionFooterHeight = 0
+        tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.tableHeaderView = profileHeaderView
+
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
 
 
 
+
+
     //==========================METHODS=========================//
+    /*
+     1. override func viewDidLoad()
+     2. override func viewDidAppear(_ animated: Bool)
+     3. private func configureTableView()
+     4. private func setConstraints()
+     5. private func zoomInUserImage()
+     6. @objc private func zoomOutProfileImage(closePhotoButtonTap: UITapGestureRecognizer)
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Profile"
@@ -41,52 +63,114 @@ class ProfileViewController: UIViewController {
         dataSource = fetchData()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
 
     private func configureTableView() {
-        view.addSubview(postTableView)
-        postTableView.pin(to: view)
+        view.addSubview(tableView)
         setConstraints()
-        self.postTableView.tableHeaderView?.layoutIfNeeded()
+        self.tableView.tableHeaderView?.layoutIfNeeded()
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         view.addGestureRecognizer(tap)
+
+        let profileImageViewTap = UITapGestureRecognizer(target: self, action: #selector(zoomInProfileImage(profileImageViewTap: )))
+        profileHeaderView.avatarImageView.addGestureRecognizer(profileImageViewTap)
+
+        let closePhotoButtonTap = UITapGestureRecognizer(target: self, action: #selector(zoomOutProfileImage(closePhotoButtonTap: )))
+        profileHeaderView.closePhotoButton.addGestureRecognizer(closePhotoButtonTap)
+
     }
 
-    private func setConstraints() {
+    func setConstraints() {
+        tableView.pin(to: self.view)
+
         NSLayoutConstraint.activate([
-            profileHeaderView.widthAnchor.constraint(equalTo: self.postTableView.widthAnchor),
-            profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
-            profileHeaderView.centerXAnchor.constraint(equalTo: self.postTableView.centerXAnchor),
-            profileHeaderView.topAnchor.constraint(equalTo: self.postTableView.topAnchor)
+            profileHeaderView.widthAnchor.constraint(equalTo: self.tableView.widthAnchor),
+            profileHeaderView.heightAnchor.constraint(equalToConstant: 250)
         ])
+    }
+
+    @objc private func zoomInProfileImage(profileImageViewTap: UITapGestureRecognizer) {
+            UIView.animate(withDuration: 0, animations: {
+                self.profileHeaderView.setAlphaViewConstraints(vc: self)
+            }, completion: {_ in UIView.animate(withDuration: 0.5, animations: {
+                self.profileHeaderView.zoomInUserPhoto(vc: self)
+                self.profileHeaderView.layoutIfNeeded()
+            }, completion: {_ in UIView.animate(withDuration: 0.3, animations: {
+                self.profileHeaderView.showClosePhotoButton()
+                self.profileHeaderView.layoutIfNeeded()
+            })
+            })})
+    }
+
+    @objc private func zoomOutProfileImage(closePhotoButtonTap: UITapGestureRecognizer) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.profileHeaderView.hideClosePhotoButton()
+            self.profileHeaderView.layoutIfNeeded()
+        }, completion: {_ in UIView.animate(withDuration: 0.5, animations: {
+            self.profileHeaderView.zoomOutUserPhoto(vc: self)
+            self.profileHeaderView.layoutIfNeeded()
+        })})
     }
 }
 
 
 
-//=========================EXTENSIONS===========================//
-extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+//================================EXTENSIONS==================================//
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource, PhotosTableViewCellDelegate {
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.dataSource.count
+        if section == 1 {
+            return self.dataSource.count
+        } else {
+            return 1
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath)
+        if indexPath.section == 1 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath)
+                return cell
+            }
+            let post = self.dataSource[indexPath.row]
+            cell.set(post: post)
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "photoCell", for: indexPath) as? PhotosTableViewCell else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath)
+                return cell
+            }
+
+            cell.delegate = self
+            cell.setup()
+
+
+            let redirectTap = UITapGestureRecognizer(target: self, action: #selector(redirectToGalleryAction))
+            cell.addGestureRecognizer(redirectTap)
+
             return cell
         }
-        let post = self.dataSource[indexPath.row]
-        cell.set(post: post)
-        return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
 
     @objc func hideKeyboard() {
         view.endEditing(true)
+    }
+
+    @objc func redirectToGalleryAction() {
+        let photosViewController = PhotosViewController()
+        self.navigationController?.pushViewController(photosViewController, animated: true)
     }
 }
 
