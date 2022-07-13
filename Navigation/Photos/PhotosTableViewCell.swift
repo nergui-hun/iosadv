@@ -167,11 +167,3 @@ class PhotosTableViewCell: UITableViewCell {
         self.fourthImageView.image = UIImage(named: "4")
     }
     }
-
-
-//===========================EXTENSIONS=================================//
-extension PhotosTableViewCell {
-    final class CustomCell: UICollectionViewCell {
-
-    }
-}

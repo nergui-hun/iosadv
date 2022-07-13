@@ -126,7 +126,6 @@ class LogInViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         view.layer.borderColor = UIColor.lightGray.cgColor
         view.layer.borderWidth = 0.5
-        self.navigationController?.navigationBar.isHidden = true
 
         view.addSubview(logoImage)
         logInTextFieldsStackView.addArrangedSubview(emailPhoneTextField)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StorageService
 
 class ProfileViewController: UIViewController {
 
@@ -58,6 +59,10 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         title = "Profile"
         self.navigationController?.navigationBar.isHidden = true
+
+        #if DEBUG
+        tableView.backgroundColor = .cyan
+        #endif
 
         configureTableView()
         dataSource = fetchData()
