@@ -16,5 +16,13 @@ extension UIView {
         trailingAnchor.constraint(equalTo: superView.trailingAnchor).isActive = true
         bottomAnchor.constraint(equalTo: superView.bottomAnchor).isActive = true
     }
+
+    func unpin(from superView: UIView) {
+        translatesAutoresizingMaskIntoConstraints = false
+        topAnchor.constraint(equalTo: superView.topAnchor).isActive = false
+        leadingAnchor.constraint(equalTo: superView.leadingAnchor).isActive = false
+        trailingAnchor.constraint(equalTo: superView.trailingAnchor).isActive = false
+        bottomAnchor.constraint(equalTo: superView.bottomAnchor).isActive = false
+    }
     
 }
