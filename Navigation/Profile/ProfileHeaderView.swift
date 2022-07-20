@@ -108,10 +108,8 @@ class ProfileHeaderView: UIView {
 
     //============================CONSTRAINTS=================================//
     private var statusButtonTopConstraint: Constraint? = nil
-    private var avatarLeftTopConstraint: Constraint? = nil
     let avatarImageViewSize: CGFloat = 130
     let spacing: CGFloat = 16
-
 
     //===========================INITIALIZERS=================================//
     override init(frame: CGRect) {
@@ -203,12 +201,11 @@ class ProfileHeaderView: UIView {
     }
 
     func setAlphaViewConstraints(vc: UIViewController) {
-        NSLayoutConstraint.activate([
-            alphaView.topAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.topAnchor),
-            alphaView.leftAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.leftAnchor),
-            alphaView.rightAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.rightAnchor),
-            alphaView.bottomAnchor.constraint(equalTo: vc.view.safeAreaLayoutGuide.bottomAnchor)
-        ])
+        alphaView.snp.makeConstraints{ make in
+            make.left.right.equalTo(vc.view)
+            make.top.equalTo(vc.view.snp.topMargin)
+            make.bottom.equalTo(vc.view.snp.bottomMargin)
+        }
     }
 
     func zoomInUserPhoto(vc: UIViewController) {
