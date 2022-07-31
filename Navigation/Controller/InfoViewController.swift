@@ -8,21 +8,34 @@
 import Foundation
 import UIKit
 
-class InfoViewController: UIViewController {
+final class InfoViewController: UIViewController {
+
+    // MARK: - View Elements
+
+    let alertButton: UIButton = {
+        let alertButton = UIButton(type: .system)
+        alertButton.backgroundColor = .yellow
+        alertButton.setTitle("Post a photo", for: .normal)
+        alertButton.tintColor = .black
+        alertButton.addTarget(self, action: #selector(alertButtonAction), for: .touchUpInside)
+        return alertButton
+    } ()
+
+
+    // MARK: - Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
 
-        let alertButton = UIButton(type: .system)
+        setupElements()
+    }
+
+    private func setupElements() {
+        view.backgroundColor = .black
+        view.addSubview(alertButton)
         alertButton.frame.size = CGSize(width: 150, height: 50)
-        alertButton.backgroundColor = .yellow
-        alertButton.setTitle("Post a photo", for: .normal)
         alertButton.center = view.center
-        alertButton.tintColor = .black
-        alertButton.addTarget(self, action: #selector(self.alertButtonAction), for: .touchUpInside)
         alertButton.autoresizingMask = [.flexibleRightMargin, .flexibleLeftMargin, .flexibleBottomMargin, .flexibleTopMargin]
-        self.view.addSubview(alertButton)
     }
 
     @objc func alertButtonAction(_ sender: UIButton!) {
@@ -31,11 +44,9 @@ class InfoViewController: UIViewController {
         let cancelAlertAction = UIAlertAction(title: "Cancel", style: .default) { (action) -> Void in
             print("Cancelled")
         }
-
         let okAlertAction = UIAlertAction(title: "Post", style: .default) { (action) -> Void in
             print("Posted")
         }
-
         myAlertController.addAction(cancelAlertAction)
         myAlertController.addAction(okAlertAction)
 

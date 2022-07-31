@@ -10,7 +10,12 @@ import UIKit
 
 class LogInViewController: UIViewController {
 
-    //================================PROPERTIES===============================//
+    // MARK: - Values
+
+    lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
+
+    // MARK: - View Elements
+
     let logoImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "logo")
@@ -75,10 +80,9 @@ class LogInViewController: UIViewController {
         return scrollView
     } ()
 
-    lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
 
+    // MARK: - Methods
 
-    //==============================METHODS==================================//
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -165,7 +169,7 @@ class LogInViewController: UIViewController {
         return tapGesture
     }()
 
-    //================================OBSERVERS===============================//
+    // MARK: - Observers
 
     func createObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(kbdShow), name: UIResponder.keyboardWillShowNotification, object: nil)

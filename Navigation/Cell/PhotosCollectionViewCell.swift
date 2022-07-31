@@ -8,36 +8,36 @@
 import Foundation
 import UIKit
 
-class PhotosCollectionViewCell: UICollectionViewCell {
+final class PhotosCollectionViewCell: UICollectionViewCell {
 
-    //==========================PROPERTIES=================================//
+
+    // MARK: - View Elements
+
     let photoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     } ()
 
-    //===========================INITIALIZERS=================================//
+
+    // MARK: - init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        self.contentView.addSubview(photoImageView)
-        setConstraints()
+
+        setupView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    //===========================METHODS=================================//
-    /*
-     1. private func setConstraints()
-     2. override func prepareForReuse()
-     3. func setup(with image: String)
-     */
-    private func setConstraints() {
+
+    // MARK: - Methods
+
+    private func setupView() {
+        self.contentView.addSubview(photoImageView)
         photoImageView.pin(to: self.contentView)
     }
 

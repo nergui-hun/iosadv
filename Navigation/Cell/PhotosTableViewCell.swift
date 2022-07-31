@@ -12,19 +12,14 @@ protocol PhotosTableViewCellDelegate: AnyObject {
     func redirectToGalleryAction()
 }
 
-class PhotosTableViewCell: UITableViewCell {
+final class PhotosTableViewCell: UITableViewCell {
 
-    //==========================PROPERTIES=================================//
-    /*
-     1. private let photosLabel: UILabel
-     2. private lazy var photosButton: UIButton
-     3. private let firstImageView: UIImageView
-     4. private let secondImageView: UIImageView
-     5. private let thirdImageView: UIImageView
-     6. private let fourthImageView: UIImageView
-     7. private lazy var layout: UICollectionViewFlowLayout
-     8. weak var delegate: PhotosTableViewCellDelegate?
-     */
+    // MARK: - Values
+
+    weak var delegate: PhotosTableViewCellDelegate?
+
+    // MARK: - View Elements
+
     private let photosLabel: UILabel = {
         let label = UILabel()
         label.text = "Photos"
@@ -88,39 +83,28 @@ class PhotosTableViewCell: UITableViewCell {
         return layout
     }()
 
-    weak var delegate: PhotosTableViewCellDelegate?
 
-    //===========================INITIALIZERS=================================//
+    // MARK: - init
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        addSubviews()
-        setConstraints()
+        setupView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    //===========================METHODS=================================//
-    /*
-     1. @objc func redirectToGalleryAction(_ sender: Any)
-     2. private func addSubviews()
-     3. private func setConstraints()
-     4. func setup()
-     */
+
+
+    // MARK: - Methods
+
     @objc func redirectToGalleryAction(_ sender: Any) {
         delegate?.redirectToGalleryAction()
     }
 
-    private func addSubviews() {
-        addSubview(photosLabel)
-        addSubview(photosButton)
-        addSubview(firstImageView)
-        addSubview(secondImageView)
-        addSubview(thirdImageView)
-        addSubview(fourthImageView)
-    }
-
-    private func setConstraints() {
+    private func setupView() {
+        let subviews = [photosLabel, photosButton, firstImageView, secondImageView, thirdImageView, fourthImageView]
+        subviews.forEach({ addSubview($0)})
         let imageSize = (UIScreen.main.bounds.width - 48) / 4
 
         NSLayoutConstraint.activate([
@@ -166,4 +150,4 @@ class PhotosTableViewCell: UITableViewCell {
         self.thirdImageView.image = UIImage(named: "3")
         self.fourthImageView.image = UIImage(named: "4")
     }
-    }
+}

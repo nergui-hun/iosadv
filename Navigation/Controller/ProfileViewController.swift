@@ -9,15 +9,13 @@ import UIKit
 import StorageService
 import SnapKit
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
 
-    //===================PROPERTIES=====================//
-    /*
-     1. var dataSource: [Post]
-     2. let profileHeaderView: ProfileHeaderView
-     3. private lazy var tableView: UITableView
-     */
+    // MARK: - Values
+
     var dataSource: [Post] = []
+
+    // MARK: - View Elements
 
     let profileHeaderView: ProfileHeaderView = {
         let phView = ProfileHeaderView()
@@ -39,34 +37,16 @@ class ProfileViewController: UIViewController {
         tableView.estimatedRowHeight = UITableView.automaticDimension
         tableView.tableHeaderView = profileHeaderView
 
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
 
 
+    // MARK: - Methods
 
-
-
-    //==========================METHODS=========================//
-    /*
-     1. override func viewDidLoad()
-     2. override func viewDidAppear(_ animated: Bool)
-     3. private func configureTableView()
-     4. private func setConstraints()
-     5. private func zoomInUserImage()
-     6. @objc private func zoomOutProfileImage(closePhotoButtonTap: UITapGestureRecognizer)
-     */
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Profile"
         self.navigationController?.navigationBar.isHidden = true
-/*
-        #if DEBUG
-        tableView.backgroundColor = .cyan
-        #else
-        tableView.backgroundColor = .white
-        #endif
- */
 
         configureTableView()
         dataSource = fetchData()
@@ -77,9 +57,8 @@ class ProfileViewController: UIViewController {
     }
 
     private func configureTableView() {
-        view.addSubview(tableView)
         
-        setConstraints()
+        setupElements()
         self.tableView.tableHeaderView?.layoutIfNeeded()
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
@@ -93,7 +72,8 @@ class ProfileViewController: UIViewController {
 
     }
 
-    func setConstraints() {
+    func setupElements() {
+        view.addSubview(tableView)
         tableView.pin(to: self.view)
 
         NSLayoutConstraint.activate([
@@ -115,7 +95,8 @@ class ProfileViewController: UIViewController {
             })})
     }
 
-    @objc private func zoomOutProfileImage(closePhotoButtonTap: UITapGestureRecognizer) {        UIView.animate(withDuration: 0.3, animations: {
+    @objc private func zoomOutProfileImage(closePhotoButtonTap: UITapGestureRecognizer) {
+        UIView.animate(withDuration: 0.3, animations: {
             self.profileHeaderView.hideClosePhotoButton()
             self.profileHeaderView.layoutIfNeeded()
         }, completion: {_ in UIView.animate(withDuration: 0.5, animations: {
@@ -127,7 +108,8 @@ class ProfileViewController: UIViewController {
 
 
 
-//================================EXTENSIONS==================================//
+// MARK: - Extensions
+
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource, PhotosTableViewCellDelegate {
 
     func numberOfSections(in tableView: UITableView) -> Int {
