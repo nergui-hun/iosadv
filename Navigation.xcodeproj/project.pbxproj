@@ -13,7 +13,12 @@
 		8D35FD6D2823E4B50016BE52 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D35FD6C2823E4B50016BE52 /* PhotosTableViewCell.swift */; };
 		8D35FD6F282425600016BE52 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D35FD6E282425600016BE52 /* PhotosViewController.swift */; };
 		8D35FD71282427310016BE52 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D35FD70282427310016BE52 /* Photo.swift */; };
-		8D69648328836E02001E2353 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 8D69648228836E02001E2353 /* iOSIntPackage */; };
+		8D5EA0E82896EC3400709B11 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0E72896EC3400709B11 /* MainCoordinator.swift */; };
+		8D5EA0EA2896EEAE00709B11 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0E92896EEAE00709B11 /* MainTabBarViewController.swift */; };
+		8D5EA0EC2896EFE400709B11 /* NavFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0EB2896EFE400709B11 /* NavFactory.swift */; };
+		8D5EA0EF28971C2400709B11 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0EE28971C2400709B11 /* LoginCoordinator.swift */; };
+		8D5EA0F328971EAC00709B11 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0F228971EAC00709B11 /* CustomButton.swift */; };
+		8D5EA0F52897206900709B11 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0F42897206900709B11 /* LoginVM.swift */; };
 		8D8B52E22871646C000ECFB2 /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B52E12871646C000ECFB2 /* StorageService.docc */; };
 		8D8B52E82871646C000ECFB2 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8B52DE2871646C000ECFB2 /* StorageService.framework */; };
 		8D8B52EF2871646C000ECFB2 /* StorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8B52EE2871646C000ECFB2 /* StorageServiceTests.swift */; };
@@ -77,6 +82,12 @@
 		8D35FD6C2823E4B50016BE52 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		8D35FD6E282425600016BE52 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		8D35FD70282427310016BE52 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		8D5EA0E72896EC3400709B11 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		8D5EA0E92896EEAE00709B11 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		8D5EA0EB2896EFE400709B11 /* NavFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavFactory.swift; sourceTree = "<group>"; };
+		8D5EA0EE28971C2400709B11 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		8D5EA0F228971EAC00709B11 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		8D5EA0F42897206900709B11 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		8D8B52DE2871646C000ECFB2 /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D8B52E02871646C000ECFB2 /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		8D8B52E12871646C000ECFB2 /* StorageService.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = StorageService.docc; sourceTree = "<group>"; };
@@ -125,7 +136,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D69648328836E02001E2353 /* iOSIntPackage in Frameworks */,
 				8DEA4F4D287DAA6800ECB7BA /* StorageService.framework in Frameworks */,
 				3F40C4F91273E4E0D2576C44 /* Pods_Navigation.framework in Frameworks */,
 			);
@@ -173,15 +183,9 @@
 				8DB2A66027E71CB1008D4B7C /* FeedViewController.swift */,
 				8DECB67327EBBAB90053D6DF /* InfoViewController.swift */,
 				8D2C4A67281B9D8E00E5C8A5 /* ProfileTableHeaderView.swift */,
+				8D5EA0E92896EEAE00709B11 /* MainTabBarViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		8D24BEB32896BE94003BB9B4 /* View Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "View Model";
 			sourceTree = "<group>";
 		};
 		8D24BEB42896BE9D003BB9B4 /* Extensions */ = {
@@ -200,6 +204,49 @@
 				8DAD9BD2284D6C3D00B7E969 /* PhotosCollectionViewCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		8D5EA0E32896EBF900709B11 /* MainCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8D5EA0E72896EC3400709B11 /* MainCoordinator.swift */,
+			);
+			path = MainCoordinator;
+			sourceTree = "<group>";
+		};
+		8D5EA0E42896EC0600709B11 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8D5EA0F028971C2900709B11 /* LoginCoordinator */,
+				8D5EA0ED2896F29100709B11 /* NavFactory */,
+				8D5EA0E32896EBF900709B11 /* MainCoordinator */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		8D5EA0ED2896F29100709B11 /* NavFactory */ = {
+			isa = PBXGroup;
+			children = (
+				8D5EA0EB2896EFE400709B11 /* NavFactory.swift */,
+			);
+			path = NavFactory;
+			sourceTree = "<group>";
+		};
+		8D5EA0F028971C2900709B11 /* LoginCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8D5EA0EE28971C2400709B11 /* LoginCoordinator.swift */,
+				8D5EA0F42897206900709B11 /* LoginVM.swift */,
+			);
+			path = LoginCoordinator;
+			sourceTree = "<group>";
+		};
+		8D5EA0F128971E5300709B11 /* CustomElements */ = {
+			isa = PBXGroup;
+			children = (
+				8D5EA0F228971EAC00709B11 /* CustomButton.swift */,
+			);
+			path = CustomElements;
 			sourceTree = "<group>";
 		};
 		8D8B52DF2871646C000ECFB2 /* StorageService */ = {
@@ -245,7 +292,8 @@
 		8DB2A64B27E68DAD008D4B7C /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				8D24BEB32896BE94003BB9B4 /* View Model */,
+				8D5EA0F128971E5300709B11 /* CustomElements */,
+				8D5EA0E42896EC0600709B11 /* Coordinator */,
 				8D24BEB22896BE8C003BB9B4 /* Controller */,
 				8D24BEB12896BE7E003BB9B4 /* View */,
 				8D24BEB02896BE76003BB9B4 /* Model */,
@@ -339,7 +387,6 @@
 			);
 			name = Navigation;
 			packageProductDependencies = (
-				8D69648228836E02001E2353 /* iOSIntPackage */,
 			);
 			productName = Navigation;
 			productReference = 8DB2A64927E68DAD008D4B7C /* Navigation.app */;
@@ -377,7 +424,6 @@
 			);
 			mainGroup = 8DB2A64027E68DAD008D4B7C;
 			packageReferences = (
-				8D69648128836E02001E2353 /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
 			);
 			productRefGroup = 8DB2A64A27E68DAD008D4B7C /* Products */;
 			projectDirPath = "";
@@ -524,19 +570,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D5EA0EC2896EFE400709B11 /* NavFactory.swift in Sources */,
+				8D5EA0F328971EAC00709B11 /* CustomButton.swift in Sources */,
 				8D35FD71282427310016BE52 /* Photo.swift in Sources */,
 				8DECB67227EBBA1B0053D6DF /* ProfileViewController.swift in Sources */,
+				8D5EA0F52897206900709B11 /* LoginVM.swift in Sources */,
 				8D8BA0C0281639B200593B06 /* LogInViewController.swift in Sources */,
 				8DB2A64D27E68DAD008D4B7C /* AppDelegate.swift in Sources */,
 				8DECB67427EBBAB90053D6DF /* InfoViewController.swift in Sources */,
+				8D5EA0EF28971C2400709B11 /* LoginCoordinator.swift in Sources */,
 				8DB2A66127E71CB1008D4B7C /* FeedViewController.swift in Sources */,
 				8DB2A66327E745A7008D4B7C /* PostViewController.swift in Sources */,
 				8D35FD6D2823E4B50016BE52 /* PhotosTableViewCell.swift in Sources */,
 				8D35FD6F282425600016BE52 /* PhotosViewController.swift in Sources */,
+				8D5EA0EA2896EEAE00709B11 /* MainTabBarViewController.swift in Sources */,
 				8D9B923727F9585B00D30526 /* ProfileHeaderView.swift in Sources */,
 				8DBE084028227F210005B573 /* UIView+Ext.swift in Sources */,
 				8D2C4A68281B9D8E00E5C8A5 /* ProfileTableHeaderView.swift in Sources */,
 				8DAD9BD3284D6C3E00B7E969 /* PhotosCollectionViewCell.swift in Sources */,
+				8D5EA0E82896EC3400709B11 /* MainCoordinator.swift in Sources */,
 				8D1279E9281C76D300CAD3DB /* PostTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -884,25 +936,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		8D69648128836E02001E2353 /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/TrueMax/iOSIntPackage.git";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 2.2.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		8D69648228836E02001E2353 /* iOSIntPackage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8D69648128836E02001E2353 /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
-			productName = iOSIntPackage;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8DB2A64127E68DAD008D4B7C /* Project object */;
 }

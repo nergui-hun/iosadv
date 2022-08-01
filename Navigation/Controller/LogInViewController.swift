@@ -12,6 +12,8 @@ class LogInViewController: UIViewController {
 
     // MARK: - Values
 
+    private let coordinator: LoginCoordinator
+    private let viewModel: LoginVM
     lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
 
     // MARK: - View Elements
@@ -40,10 +42,10 @@ class LogInViewController: UIViewController {
         return textField
     } ()
 
-    private lazy var logInButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Log In", for: .normal)
-        button.setTitleColor(.white, for: .normal)
+    private lazy var logInButton: CustomButton = {
+        let button = CustomButton(title: "Log In", titleColor: .white) {
+            self.viewModel.changeState(.viewReady)
+        }
         button.setBackgroundImage(UIImage(named: "blue_pixel.png"), for: .normal)
         button.clipsToBounds = true
         button.layer.cornerRadius = 10
@@ -54,7 +56,6 @@ class LogInViewController: UIViewController {
             button.alpha = 1
         }
 
-        button.addTarget(self, action: #selector(redirectProfile), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -81,12 +82,26 @@ class LogInViewController: UIViewController {
     } ()
 
 
+    // MARK: - init
+
+    init(coordinator: LoginCoordinator, viewModel: LoginVM) {
+        self.coordinator = coordinator
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+
     // MARK: - Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         setConstraints()
+        setupViewModel()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -115,12 +130,24 @@ class LogInViewController: UIViewController {
         let profileViewController = ProfileViewController()
         let profileNavigationController = UINavigationController(rootViewController: profileViewController)
         self.tabBarController?.viewControllers?[1] = profileNavigationController
-        profileNavigationController.tabBarItem.image = UIImage(systemName: "person.fill")
     }
 
     @objc func cancelEditing() {
         emailPhoneTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
+    }
+
+    private func setupViewModel() {
+        viewModel.stateChanged = { [weak self] state in
+            switch state {
+            case .initial:
+                ()
+            case .loaded:
+                self!.coordinator.redirectProfile(navCon: self!.navigationController, coordinator: self!.coordinator)
+            case .error:
+                ()
+            }
+        }
     }
 
 
