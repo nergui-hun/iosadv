@@ -13,13 +13,18 @@ final class ProfileViewController: UIViewController {
 
     // MARK: - Values
 
-    var dataSource: [Post] = []
+    private let viewModel: ProfileVMProtocol?
+
+    private lazy var doubleTapGR: UITapGestureRecognizer = {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(postTapped))
+        gesture.numberOfTapsRequired = 2
+        return gesture
+    } ()
 
     // MARK: - View Elements
 
     let profileHeaderView: ProfileHeaderView = {
         let phView = ProfileHeaderView()
-        phView.translatesAutoresizingMaskIntoConstraints = false
         phView.avatarImageView.isUserInteractionEnabled = true
         return phView
     }()
@@ -40,6 +45,16 @@ final class ProfileViewController: UIViewController {
         return tableView
     }()
 
+    // MARK: - init()
+
+    init(viewModel: ProfileVMProtocol?) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - Methods
 
@@ -49,7 +64,6 @@ final class ProfileViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
 
         configureTableView()
-        dataSource = fetchData()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -64,6 +78,8 @@ final class ProfileViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         view.addGestureRecognizer(tap)
 
+        tableView.addGestureRecognizer(doubleTapGR)
+
         let profileImageViewTap = UITapGestureRecognizer(target: self, action: #selector(zoomInProfileImage(profileImageViewTap: )))
         profileHeaderView.avatarImageView.addGestureRecognizer(profileImageViewTap)
 
@@ -76,10 +92,10 @@ final class ProfileViewController: UIViewController {
         view.addSubview(tableView)
         tableView.pin(to: self.view)
 
-        NSLayoutConstraint.activate([
-            profileHeaderView.widthAnchor.constraint(equalTo: self.tableView.widthAnchor),
-            profileHeaderView.heightAnchor.constraint(equalToConstant: 250)
-        ])
+        profileHeaderView.snp.makeConstraints { make in
+            make.width.equalTo(tableView)
+            make.height.equalTo(250)
+        }
     }
 
     @objc private func zoomInProfileImage(profileImageViewTap: UITapGestureRecognizer) {
@@ -104,6 +120,19 @@ final class ProfileViewController: UIViewController {
             self.profileHeaderView.layoutIfNeeded()
         })})
     }
+
+    @objc private func postTapped() {
+        let tapLocation = doubleTapGR.location(in: tableView)
+        guard let indexPath = tableView.indexPathForRow(at: tapLocation) else {
+            print("Error: no index path \nProfileVC postTapped")
+            return
+        }
+
+
+            guard let viewModel = viewModel else { return }
+            CoreDataManager.shared.savePost(index: indexPath.row, post: viewModel.posts)
+
+        }
 }
 
 
@@ -118,7 +147,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource, Pho
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
-            return self.dataSource.count
+            guard let count = try? viewModel?.numberOfRows() else {
+                preconditionFailure("No posts")
+            }
+            return count
         } else {
             return 1
         }
@@ -130,10 +162,14 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource, Pho
                 let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath)
                 return cell
             }
-            let post = self.dataSource[indexPath.row]
-            cell.set(post: post)
+
+            let cellVM = viewModel?.cellViewModel(forIndexPath: indexPath)
+            cell.viewModel = cellVM
+
             return cell
+
         } else {
+
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "photoCell", for: indexPath) as? PhotosTableViewCell else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell", for: indexPath)
                 return cell
@@ -162,18 +198,5 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource, Pho
     @objc func redirectToGalleryAction() {
         let photosViewController = PhotosViewController()
         self.navigationController?.pushViewController(photosViewController, animated: true)
-    }
-}
-
-extension ProfileViewController {
-
-    func fetchData() -> [Post] {
-        let post1 = Post(author: "Нетология. Меряем карьеру через образование.", description: "От 'Hello, World' до первого сложного iOS-приложения - всего один курс. Если чувствуете в себе силу для покорения топов AppStore - пора начинать действовать! Профессия «iOS-разработчик» - тот самый путь, по которому стоит пройти по самого конца. Вы научитесь создавать приложения на языке Swift с нуля: от начинки до интерфейса. Чтобы закрепить знания на практике, каждый студент подготовит дипломную работу - VK-like приложение с возможностью публиковать фотографии, использовать фильтры, ставить лайки и подписываться на других пользователей.", image: "camel", likes: 766, views: 893)
-
-        let post2 = Post(author: "Cats TV", description: "Bald cats are very cute", image: "bald", likes: 233, views: 234)
-        let post3 = Post(author: "Mongolia TV", description: "Mongolian house", image: "ger", likes: 34, views: 354)
-        let post4 = Post(author: "Rock TV", description: "The HU", image: "hu", likes: 33, views: 45)
-
-        return [post1, post2, post3, post4]
     }
 }

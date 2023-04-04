@@ -12,6 +12,35 @@ import SnapKit
 
 final class PostTableViewCell: UITableViewCell {
 
+    // MARK: - Values
+
+    var viewModel: PostTableVM? {
+        willSet(viewModel) {
+            guard let viewModel = viewModel else {
+                print("hi")
+                return
+            }
+            authorLabel.text = viewModel.author
+            descriptionLabel.text = viewModel.postText
+            postImageView.image = UIImage(named: viewModel.image)
+            likesLabel.text = "Likes: \(viewModel.likes)"
+            viewsLabel.text = "Views: \(viewModel.views)"
+        }
+    }
+
+    var savedPostsVM: SavedPostsCellVM? {
+        willSet(viewModel) {
+            guard let viewModel = viewModel else {
+                return
+            }
+            authorLabel.text = viewModel.author
+            descriptionLabel.text = viewModel.postText
+            postImageView.image = UIImage(named: viewModel.image)
+            likesLabel.text = "Likes: \(viewModel.likes)"
+            viewsLabel.text = "Views: \(viewModel.views)"
+        }
+    }
+
 
     // MARK: - View Elements
 
@@ -31,6 +60,15 @@ final class PostTableViewCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
+
+    private lazy var likeButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "heart")?.withTintColor(.black, renderingMode: .alwaysOriginal), for: .normal)
+        button.setBackgroundImage(UIImage(systemName: "heart.fill")?.withTintColor(.red, renderingMode: .alwaysTemplate), for: .selected)
+        button.addTarget(self, action: #selector(likeAction), for: .touchUpInside)
+
+        return button
+    } ()
 
     private let descriptionLabel: UILabel = {
         let label = UILabel()
@@ -73,41 +111,65 @@ final class PostTableViewCell: UITableViewCell {
 
     // MARK: - Methods
 
+    @objc func likeAction() {
+
+        guard let viewModel = viewModel else {
+            return
+        }
+
+        if likeButton.isSelected {
+            likeButton.isSelected = false
+            likesLabel.text = "Likes: \(viewModel.likes)"
+        } else {
+            likeButton.isSelected = true
+            likesLabel.text = "Likes: \(viewModel.likes + 1)"
+        }
+    }
+
     func set(post: Post) {
         self.authorLabel.text = post.author
         self.postImageView.image = UIImage(named: post.image)
-        self.descriptionLabel.text = post.description
+        self.descriptionLabel.text = post.postText
         self.likesLabel.text = "Likes: \(post.likes)"
         self.viewsLabel.text = "Views: \(post.views)"
     }
 
     private func setupView() {
-        let subviews = [authorLabel, postImageView, descriptionLabel, likesLabel, viewsLabel]
+        let subviews = [authorLabel, postImageView, likeButton, descriptionLabel, likesLabel, viewsLabel]
         subviews.forEach({ self.contentView.addSubview($0)})
-        
-        NSLayoutConstraint.activate([
-            authorLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 16),
-            authorLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
-            authorLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
 
-            postImageView.topAnchor.constraint(equalTo: authorLabel.bottomAnchor, constant: 16),
-            postImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
-            postImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+        authorLabel.snp.makeConstraints { make in
+            make.top.leading.trailing.equalToSuperview().inset(16)
+        }
 
-            descriptionLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 16),
-            descriptionLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
-            descriptionLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
-            descriptionLabel.bottomAnchor.constraint(equalTo: likesLabel.topAnchor, constant: -16),
-            
-            likesLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
-            likesLabel.heightAnchor.constraint(equalToConstant: 30),
-            likesLabel.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/2),
-            likesLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -16),
 
-            viewsLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
-            viewsLabel.topAnchor.constraint(equalTo: likesLabel.topAnchor),
-            viewsLabel.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width/2),
-            viewsLabel.bottomAnchor.constraint(equalTo: likesLabel.bottomAnchor)
-        ])
+        postImageView.snp.makeConstraints { make in
+            make.top.equalTo(authorLabel.snp_bottomMargin).offset(16)
+            make.width.height.equalTo(UIScreen.main.bounds.width)
+        }
+
+        likeButton.snp.makeConstraints { make in
+            make.top.equalTo(postImageView.snp_bottomMargin).offset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.height.equalTo(40)
+            make.width.equalTo(45)
+        }
+
+        descriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(likeButton.snp_bottomMargin).offset(16)
+            make.leading.trailing.equalToSuperview().inset(16)
+            make.bottom.equalTo(likesLabel.snp_topMargin).offset(-16)
+        }
+
+        likesLabel.snp.makeConstraints { make in
+            make.leading.bottom.equalToSuperview().inset(16)
+            make.height.equalTo(30)
+            make.width.equalToSuperview().dividedBy(2)
+        }
+
+        viewsLabel.snp.makeConstraints { make in
+            make.trailing.bottom.equalToSuperview().inset(16)
+            make.height.width.equalTo(likesLabel)
+        }
     }
 }

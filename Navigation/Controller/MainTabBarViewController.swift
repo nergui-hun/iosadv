@@ -11,7 +11,8 @@ import UIKit
 final class MainTabBarViewController: UITabBarController {
 
     private let feedVC = NavFactory(navCon: UINavigationController(), tab: .feed)
-    private let loginVC = NavFactory(navCon: UINavigationController(), tab: .login)
+    private let profileVC = NavFactory(navCon: UINavigationController(), tab: .profile)
+    private let savedVC = NavFactory(navCon: UINavigationController(), tab: .saved)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +26,15 @@ final class MainTabBarViewController: UITabBarController {
         tabBar.isTranslucent = false
 
         feedVC.navCon.tabBarItem.image = UIImage(systemName: "house.fill")
-        loginVC.navCon.tabBarItem.image = UIImage(systemName: "person.fill")
+        profileVC.navCon.tabBarItem.image = UIImage(systemName: "person.fill")
+        savedVC.navCon.tabBarItem.image = UIImage(systemName: "bookmark.fill")
     }
 
     private func setControllers() {
         viewControllers = [
             feedVC.navCon,
-            loginVC.navCon]
+            profileVC.navCon,
+            savedVC.navCon
+        ]
     }
 }

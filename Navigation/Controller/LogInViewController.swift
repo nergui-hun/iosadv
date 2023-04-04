@@ -127,7 +127,8 @@ class LogInViewController: UIViewController {
     }
 
     @objc func redirectProfile() {
-        let profileViewController = ProfileViewController()
+        let profileVM = ProfileVM()
+        let profileViewController = ProfileViewController(viewModel: profileVM)
         let profileNavigationController = UINavigationController(rootViewController: profileViewController)
         self.tabBarController?.viewControllers?[1] = profileNavigationController
     }

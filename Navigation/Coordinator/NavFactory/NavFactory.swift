@@ -11,11 +11,13 @@ import UIKit
 final class NavFactory {
     enum Tab {
         case feed
-        case login
+        case profile
+        case saved
     }
 
     let navCon: UINavigationController
     let tab: Tab
+    let profileVM = ProfileVM()
 
     init(navCon: UINavigationController, tab: Tab) {
         self.navCon = navCon
@@ -24,17 +26,21 @@ final class NavFactory {
     }
 
     func startModule() {
+
+        let controller: UIViewController
+
         switch tab {
         case .feed:
-            let controller = FeedViewController()
+            controller = FeedViewController()
             navCon.tabBarItem.title = "Feed"
-            navCon.setViewControllers([controller], animated: true)
-        case .login:
-            let loginCoordinator = LoginCoordinator()
-            let loginVM = LoginVM()
-            let controller = LogInViewController(coordinator: loginCoordinator, viewModel: loginVM)
+        case .profile:
+            controller = ProfileViewController(viewModel: profileVM)
             navCon.tabBarItem.title = "Profile"
-            navCon.setViewControllers([controller], animated: true)
+        case .saved:
+            controller = SavedViewController()
+            navCon.tabBarItem.title = "Saved"
         }
+
+        navCon.setViewControllers([controller], animated: true)
     }
 }
