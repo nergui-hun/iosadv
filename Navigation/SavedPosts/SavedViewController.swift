@@ -28,7 +28,7 @@ final class SavedViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        CoreDataManager.shared.getPost {
+        CoreDataManager.shared.getContext {
             table.reloadData()
         }
     }

@@ -130,7 +130,7 @@ final class ProfileViewController: UIViewController {
 
 
             guard let viewModel = viewModel else { return }
-            CoreDataManager.shared.savePost(index: indexPath.row, post: viewModel.posts)
+        CoreDataManager.shared.saveContext()
 
         }
 }
