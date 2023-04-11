@@ -8,18 +8,20 @@
 import Foundation
 
 public struct Post {
+    public let id: UInt
     public let author: String
     public var postText: String
     public let image: String
     public var likes: UInt
     public var views: UInt
 
-    /*public init(author: String, description: String, image: String, likes: UInt, views: UInt) {
+    public init(id: UInt, author: String, postText: String, image: String, likes: UInt, views: UInt) {
+        self.id = id
         self.author = author
-        self.description = description
+        self.postText = postText
         self.image = image
         self.likes = likes
         self.views = views
-    }*/
+    }
 }
 

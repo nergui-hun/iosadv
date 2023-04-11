@@ -17,11 +17,11 @@ protocol ProfileVMProtocol {
 
 final class ProfileVM: ProfileVMProtocol {
     var posts: [Post] = [
-                Post(author: "Нетология. Меряем карьеру через образование.", postText: "От 'Hello, World' до первого сложного iOS-приложения - всего один курс. Если чувствуете в себе силу для покорения топов AppStore - пора начинать действовать! Профессия «iOS-разработчик» - тот самый путь, по которому стоит пройти по самого конца. Вы научитесь создавать приложения на языке Swift с нуля: от начинки до интерфейса. Чтобы закрепить знания на практике, каждый студент подготовит дипломную работу - VK-like приложение с возможностью публиковать фотографии, использовать фильтры, ставить лайки и подписываться на других пользователей.", image: "camel", likes: 766, views: 893),
+        Post(id: 1, author: "Нетология. Меряем карьеру через образование.", postText: "От 'Hello, World' до первого сложного iOS-приложения - всего один курс. Если чувствуете в себе силу для покорения топов AppStore - пора начинать действовать! Профессия «iOS-разработчик» - тот самый путь, по которому стоит пройти по самого конца. Вы научитесь создавать приложения на языке Swift с нуля: от начинки до интерфейса. Чтобы закрепить знания на практике, каждый студент подготовит дипломную работу - VK-like приложение с возможностью публиковать фотографии, использовать фильтры, ставить лайки и подписываться на других пользователей.", image: "camel", likes: 766, views: 893),
 
-                Post(author: "Cats TV", postText: "Bald cats are very cute", image: "bald", likes: 233, views: 234),
-                Post(author: "Mongolia TV", postText: "Mongolian house", image: "ger", likes: 34, views: 354),
-                Post(author: "Rock TV", postText: "The HU", image: "hu", likes: 33, views: 45)
+        Post(id: 2, author: "Cats TV", postText: "Bald cats are very cute", image: "bald", likes: 233, views: 234),
+        Post(id: 3, author: "Mongolia TV", postText: "Mongolian house", image: "ger", likes: 34, views: 354),
+        Post(id: 4, author: "Rock TV", postText: "The HU", image: "hu", likes: 33, views: 45)
 
 
 ]

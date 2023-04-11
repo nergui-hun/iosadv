@@ -1,20 +1,20 @@
-/*
- Program name: Navigation
- File name: PostTableViewCell.swift
-
- Created by M M on 4/29/22.
- */
+//
+//  SavedTableViewCell.swift
+//  Navigation
+//
+//  Created by M M on 4/10/23.
+//
 
 import Foundation
 import UIKit
 import StorageService
 import SnapKit
 
-final class PostTableViewCell: UITableViewCell {
+final class SavedTableViewCell: UITableViewCell {
 
     // MARK: - Values
 
-    var viewModel: PostTableVM? {
+    var viewModel: SavedPostsCellVM? {
         willSet(viewModel) {
             guard let viewModel = viewModel else {
                 print("hi")
@@ -124,3 +124,4 @@ final class PostTableViewCell: UITableViewCell {
         }
     }
 }
+

@@ -16,18 +16,8 @@ class CoreDataManager {
     // MARK: - Values
 
     var posts: [SavedPosts] = []
+    private lazy var context = persistentContainer.viewContext
 
-    private var persistentStoreURL: NSURL {
-        let storeName = "PostModel.sqlite"
-        let fileManager = FileManager.default
-        let documentDirectoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
-        return documentDirectoryURL.appendingPathComponent(storeName) as NSURL
-    }
-
-
-
-
-    //!!!!!!!!!!!!!!
     lazy var persistentContainer: NSPersistentContainer = {
 
         let container = NSPersistentContainer(name: "PostModel")
@@ -41,39 +31,11 @@ class CoreDataManager {
 
     //MARK: - Core Data Saving support
 
-
-    /*func getPost(callback: () -> ()) {
-        CoreDataManager.shared.posts.removeAll()
-        let fetchRequest = PostCoreDataModel.fetchRequest()
-
-        do {
-            let allPosts = try mainManagedObjectContext.fetch(fetchRequest)
-
-            for currentPost in allPosts {
-                let tempPost = SavedPosts(author: currentPost.author ?? "",
-                                          postText: currentPost.postText ?? "",
-                                          image: currentPost.image ?? "",
-                                          likes: Int(currentPost.likes),
-                                          views: Int(currentPost.views))
-                CoreDataManager.shared.posts.append(tempPost)
-            }
-            
-        } catch {
-            print(error.localizedDescription)
-            fatalError()
-        }
-
-        callback()
-    }*/
-
     func saveContext() {
-        let context = persistentContainer.viewContext
 
-        
         if context.hasChanges {
             do {
                 try context.save()
-                print("save")
             } catch {
                 let nserror = error as NSError
                 fatalError("Unsolved error \(nserror), \(nserror.userInfo)")
@@ -81,7 +43,64 @@ class CoreDataManager {
         }
     }
 
-    func getContext(callback: () -> ()) {
-        let context = persistentContainer.viewContext
+    func reloadPosts() {
+        let fetchRequest = SavedPosts.fetchRequest()
+        posts = (try? persistentContainer.viewContext.fetch(fetchRequest)) ?? []
+    }
+
+    func getContext() {
+        do {
+            posts = try context.fetch(SavedPosts.fetchRequest())
+            reloadPosts()
+        } catch {
+
+        }
+    }
+
+    func addPost(post: Post) {
+        if isPostUnique(post: post) {
+            persistentContainer.performBackgroundTask { context in
+
+                let newPost = SavedPosts(context: context)
+                newPost.author = post.author
+                newPost.postText = post.postText
+                newPost.image = post.image
+                newPost.likes = Int16(post.likes)
+                newPost.views = Int16(post.views)
+
+                do {
+                    try context.save()
+                    print("Post added")
+                } catch {
+                    print("CoreData error: \(error)")
+                }
+            }
+        } else {
+            print("CoreDataManager | addPost | post isn't unique")
+        }
+    }
+
+    func getPost(id: Int) {
+
+    }
+
+    func deletePost(post: SavedPosts) {
+                context.delete(post)
+                saveContext()
+                reloadPosts()
+    }
+    
+    func isPostUnique(post: Post) -> Bool {
+        let fetchRequest = SavedPosts.fetchRequest()
+        do {
+            if let post = try context.fetch(fetchRequest).first(where: {
+                $0.author == post.author && $0.image == post.image &&
+                $0.postText == post.postText }) {
+                return false
+            }
+        } catch {
+            print("CoreData error: \(error)")
+        }
+        return true
     }
 }

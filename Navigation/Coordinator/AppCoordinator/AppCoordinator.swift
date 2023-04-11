@@ -1,5 +1,5 @@
 //
-//  MainCoordinator.swift
+//  AppCoordinator.swift
 //  Navigation
 //
 //  Created by M M on 7/31/22.
@@ -23,8 +23,8 @@ final class AppCoordinator: AppCoordinatorProtocol {
     }
 
     func startApp() {
-        let loginCoordinator = LoginCoordinator(window: self.window, parentCoordinator: self)
-        loginCoordinator.openProfile()
+        let profileCoordinator = ProfileCoordinator(window: self.window, parentCoordinator: self)
+        profileCoordinator.openProfile()
         self.window?.rootViewController = tabbar
     }
 }

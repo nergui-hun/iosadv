@@ -183,7 +183,7 @@ final class ProfileHeaderView: UIView {
     }
 
     func setAlphaViewConstraints(vc: UIViewController) {
-        alphaView.snp.makeConstraints{ make in
+        alphaView.snp.makeConstraints { make in
             make.left.right.equalTo(vc.view)
             make.top.equalTo(vc.view.snp.topMargin)
             make.bottom.equalTo(vc.view.snp.bottomMargin)

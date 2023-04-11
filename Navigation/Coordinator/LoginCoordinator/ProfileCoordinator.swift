@@ -1,5 +1,5 @@
 //
-//  LoginCoordinator.swift
+//  ProfileCoordinator.swift
 //  Navigation
 //
 //  Created by M M on 7/31/22.
@@ -8,7 +8,9 @@
 import Foundation
 import UIKit
 
-final class LoginCoordinator {
+final class ProfileCoordinator {
+
+    // MARK: - Values
 
     let parentCoordinator: AppCoordinator
     let profileVM = ProfileVM()
@@ -23,12 +25,12 @@ final class LoginCoordinator {
     }
 
     func openProfile() {
-        //parentCoordinator.setupTabbar()
         self.navCon.pushViewController(profileVC, animated: true)
     }
 
 
-    func redirectProfile(navCon: UINavigationController?, coordinator: LoginCoordinator) {
+    //coordinator?
+    func redirectProfile(navCon: UINavigationController?, coordinator: ProfileCoordinator) {
         window?.rootViewController = MainTabBarViewController()
         navCon?.pushViewController(profileVC, animated: true)
     }

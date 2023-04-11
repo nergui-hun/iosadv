@@ -11,16 +11,20 @@ struct SavedPostsCellVM {
 
     var post: SavedPosts
 
+    var postID: UInt {
+        return UInt(post.id)
+    }
+
     var author: String {
-        return post.author
+        return post.author! //Fatal error: Unexpectedly found nil while unwrapping an Optional value
     }
 
     var postText: String {
-        return post.postText
+        return post.postText!
     }
 
     var image: String {
-        return post.image
+        return post.image!
     }
 
     var likes: UInt {

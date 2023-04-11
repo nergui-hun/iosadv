@@ -13,10 +13,11 @@
 		8D35FD6D2823E4B50016BE52 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D35FD6C2823E4B50016BE52 /* PhotosTableViewCell.swift */; };
 		8D35FD6F282425600016BE52 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D35FD6E282425600016BE52 /* PhotosViewController.swift */; };
 		8D35FD71282427310016BE52 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D35FD70282427310016BE52 /* Photo.swift */; };
+		8D37BFF229E3A39C004092FC /* SavedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D37BFF129E3A39C004092FC /* SavedTableViewCell.swift */; };
 		8D5EA0E82896EC3400709B11 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0E72896EC3400709B11 /* AppCoordinator.swift */; };
 		8D5EA0EA2896EEAE00709B11 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0E92896EEAE00709B11 /* MainTabBarViewController.swift */; };
 		8D5EA0EC2896EFE400709B11 /* NavFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0EB2896EFE400709B11 /* NavFactory.swift */; };
-		8D5EA0EF28971C2400709B11 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0EE28971C2400709B11 /* LoginCoordinator.swift */; };
+		8D5EA0EF28971C2400709B11 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0EE28971C2400709B11 /* ProfileCoordinator.swift */; };
 		8D5EA0F328971EAC00709B11 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0F228971EAC00709B11 /* CustomButton.swift */; };
 		8D5EA0F52897206900709B11 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0F42897206900709B11 /* LoginVM.swift */; };
 		8D71CD5029A9AF100012C223 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D71CD4F29A9AF100012C223 /* CoreDataManager.swift */; };
@@ -35,7 +36,6 @@
 		8DB2A66327E745A7008D4B7C /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB2A66227E745A7008D4B7C /* PostViewController.swift */; };
 		8DBE084028227F210005B573 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBE083F28227F210005B573 /* UIView+Ext.swift */; };
 		8DE27EC129AA9C9D006D0B0E /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE27EC029AA9C9D006D0B0E /* SavedViewController.swift */; };
-		8DE27EC529AC425F006D0B0E /* SavedPosts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE27EC429AC425F006D0B0E /* SavedPosts.swift */; };
 		8DEA4F4D287DAA6800ECB7BA /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8B52DE2871646C000ECFB2 /* StorageService.framework */; };
 		8DEA4F4E287DAA6800ECB7BA /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8B52DE2871646C000ECFB2 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8DECB67227EBBA1B0053D6DF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DECB67127EBBA1B0053D6DF /* ProfileViewController.swift */; };
@@ -91,10 +91,11 @@
 		8D35FD6C2823E4B50016BE52 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		8D35FD6E282425600016BE52 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		8D35FD70282427310016BE52 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		8D37BFF129E3A39C004092FC /* SavedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTableViewCell.swift; sourceTree = "<group>"; };
 		8D5EA0E72896EC3400709B11 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		8D5EA0E92896EEAE00709B11 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		8D5EA0EB2896EFE400709B11 /* NavFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavFactory.swift; sourceTree = "<group>"; };
-		8D5EA0EE28971C2400709B11 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		8D5EA0EE28971C2400709B11 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		8D5EA0F228971EAC00709B11 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		8D5EA0F42897206900709B11 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		8D71CD4F29A9AF100012C223 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -116,7 +117,6 @@
 		8DB2A66227E745A7008D4B7C /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		8DBE083F28227F210005B573 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		8DE27EC029AA9C9D006D0B0E /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
-		8DE27EC429AC425F006D0B0E /* SavedPosts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPosts.swift; sourceTree = "<group>"; };
 		8DECB67127EBBA1B0053D6DF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8DECB67327EBBAB90053D6DF /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		8DFE679929AF7B4900B46E49 /* SavedPostsCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPostsCellVM.swift; sourceTree = "<group>"; };
@@ -179,7 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				8D35FD70282427310016BE52 /* Photo.swift */,
-				8DE27EC429AC425F006D0B0E /* SavedPosts.swift */,
 				8DFE67A829B4309A00B46E49 /* ProfileVM.swift */,
 			);
 			path = Model;
@@ -226,20 +225,29 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		8D5EA0E32896EBF900709B11 /* MainCoordinator */ = {
+		8D37BFEE29E33266004092FC /* SavedCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				8DFE67A229B1929100B46E49 /* SavedCoordinator.swift */,
+			);
+			path = SavedCoordinator;
+			sourceTree = "<group>";
+		};
+		8D5EA0E32896EBF900709B11 /* AppCoordinator */ = {
 			isa = PBXGroup;
 			children = (
 				8D5EA0E72896EC3400709B11 /* AppCoordinator.swift */,
 			);
-			path = MainCoordinator;
+			path = AppCoordinator;
 			sourceTree = "<group>";
 		};
 		8D5EA0E42896EC0600709B11 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				8D37BFEE29E33266004092FC /* SavedCoordinator */,
 				8D5EA0F028971C2900709B11 /* LoginCoordinator */,
 				8D5EA0ED2896F29100709B11 /* NavFactory */,
-				8D5EA0E32896EBF900709B11 /* MainCoordinator */,
+				8D5EA0E32896EBF900709B11 /* AppCoordinator */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -255,7 +263,7 @@
 		8D5EA0F028971C2900709B11 /* LoginCoordinator */ = {
 			isa = PBXGroup;
 			children = (
-				8D5EA0EE28971C2400709B11 /* LoginCoordinator.swift */,
+				8D5EA0EE28971C2400709B11 /* ProfileCoordinator.swift */,
 			);
 			path = LoginCoordinator;
 			sourceTree = "<group>";
@@ -345,7 +353,7 @@
 				8DFE679929AF7B4900B46E49 /* SavedPostsCellVM.swift */,
 				8D71CD4F29A9AF100012C223 /* CoreDataManager.swift */,
 				8DFE679F29B188A700B46E49 /* PostModel.xcdatamodeld */,
-				8DFE67A229B1929100B46E49 /* SavedCoordinator.swift */,
+				8D37BFF129E3A39C004092FC /* SavedTableViewCell.swift */,
 			);
 			path = SavedPosts;
 			sourceTree = "<group>";
@@ -625,9 +633,8 @@
 				8D71CD5229A9B00C0012C223 /* SceneDelegate.swift in Sources */,
 				8DFE67A529B418A600B46E49 /* PostTableVM.swift in Sources */,
 				8DECB67427EBBAB90053D6DF /* InfoViewController.swift in Sources */,
-				8D5EA0EF28971C2400709B11 /* LoginCoordinator.swift in Sources */,
+				8D5EA0EF28971C2400709B11 /* ProfileCoordinator.swift in Sources */,
 				8DFE67A329B1929100B46E49 /* SavedCoordinator.swift in Sources */,
-				8DE27EC529AC425F006D0B0E /* SavedPosts.swift in Sources */,
 				8DB2A66127E71CB1008D4B7C /* FeedViewController.swift in Sources */,
 				8DB2A66327E745A7008D4B7C /* PostViewController.swift in Sources */,
 				8D35FD6D2823E4B50016BE52 /* PhotosTableViewCell.swift in Sources */,
@@ -636,6 +643,7 @@
 				8D5EA0EA2896EEAE00709B11 /* MainTabBarViewController.swift in Sources */,
 				8D9B923727F9585B00D30526 /* ProfileHeaderView.swift in Sources */,
 				8DBE084028227F210005B573 /* UIView+Ext.swift in Sources */,
+				8D37BFF229E3A39C004092FC /* SavedTableViewCell.swift in Sources */,
 				8D2C4A68281B9D8E00E5C8A5 /* ProfileTableHeaderView.swift in Sources */,
 				8DAD9BD3284D6C3E00B7E969 /* PhotosCollectionViewCell.swift in Sources */,
 				8D5EA0E82896EC3400709B11 /* AppCoordinator.swift in Sources */,

@@ -12,7 +12,7 @@ class LogInViewController: UIViewController {
 
     // MARK: - Values
 
-    private let coordinator: LoginCoordinator
+    private let coordinator: ProfileCoordinator
     private let viewModel: LoginVM
     lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
 
@@ -84,7 +84,7 @@ class LogInViewController: UIViewController {
 
     // MARK: - init
 
-    init(coordinator: LoginCoordinator, viewModel: LoginVM) {
+    init(coordinator: ProfileCoordinator, viewModel: LoginVM) {
         self.coordinator = coordinator
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)

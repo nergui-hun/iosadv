@@ -12,6 +12,10 @@ struct PostTableVM {
 
     var post: Post
 
+    var postID: UInt {
+        post.id
+    }
+
     var author: String {
         post.author
     }
