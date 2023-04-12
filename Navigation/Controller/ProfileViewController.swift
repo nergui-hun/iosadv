@@ -15,12 +15,6 @@ final class ProfileViewController: UIViewController {
 
     private let viewModel: ProfileVMProtocol?
 
-    private lazy var doubleTap: UITapGestureRecognizer = {
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(postTapped))
-        gesture.numberOfTapsRequired = 2
-        return gesture
-    } ()
-
     // MARK: - View Elements
 
     let profileHeaderView: ProfileHeaderView = {
@@ -78,8 +72,6 @@ final class ProfileViewController: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         view.addGestureRecognizer(tap)
 
-        tableView.addGestureRecognizer(doubleTap)
-
         let profileImageViewTap = UITapGestureRecognizer(target: self, action: #selector(zoomInProfileImage(profileImageViewTap: )))
         profileHeaderView.avatarImageView.addGestureRecognizer(profileImageViewTap)
 
@@ -96,18 +88,6 @@ final class ProfileViewController: UIViewController {
             make.width.equalTo(tableView)
             make.height.equalTo(250)
         }
-    }
-
-    @objc private func postTapped() {
-        print("tap")
-        let tapLocation = doubleTap.location(in: tableView)
-        guard let indexPath = tableView.indexPathForRow(at: tapLocation) else {
-            print("Error: no index path \nProfileVC postTapped")
-            return
-        }
-
-        guard let viewModel = viewModel else { return }
-        CoreDataManager.shared.addPost(post: viewModel.posts[indexPath.row])
     }
 
     @objc private func zoomInProfileImage(profileImageViewTap: UITapGestureRecognizer) {

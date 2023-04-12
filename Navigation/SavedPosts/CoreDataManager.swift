@@ -93,9 +93,9 @@ class CoreDataManager {
     func isPostUnique(post: Post) -> Bool {
         let fetchRequest = SavedPosts.fetchRequest()
         do {
-            if let post = try context.fetch(fetchRequest).first(where: {
+            if (try context.fetch(fetchRequest).first(where: {
                 $0.author == post.author && $0.image == post.image &&
-                $0.postText == post.postText }) {
+                $0.postText == post.postText })) != nil {
                 return false
             }
         } catch {

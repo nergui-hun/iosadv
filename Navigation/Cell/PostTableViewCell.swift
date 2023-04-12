@@ -69,6 +69,15 @@ final class PostTableViewCell: UITableViewCell {
         return label
     }()
 
+    lazy var likeButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "heart")?.withTintColor(.black, renderingMode: .alwaysOriginal), for: .normal)
+        button.setBackgroundImage(UIImage(systemName: "heart.fill")?.withTintColor(.red, renderingMode: .alwaysTemplate), for: .selected)
+        button.addTarget(self, action: #selector(likeAction), for: .touchUpInside)
+
+        return button
+    } ()
+    
 
 
     // MARK: - init
@@ -84,6 +93,23 @@ final class PostTableViewCell: UITableViewCell {
 
     // MARK: - Methods
 
+    @objc func likeAction() {
+
+        guard let viewModel = viewModel else {
+            return
+        }
+
+        if likeButton.isSelected {
+            likeButton.isSelected = false
+            likesLabel.text = "Likes: \(viewModel.likes)"
+        } else {
+            likeButton.isSelected = true
+            likesLabel.text = "Likes: \(viewModel.likes + 1)"
+
+            CoreDataManager.shared.addPost(post: viewModel.post)
+        }
+    }
+
     func set(post: Post) {
         self.authorLabel.text = post.author
         self.postImageView.image = UIImage(named: post.image)
@@ -93,7 +119,7 @@ final class PostTableViewCell: UITableViewCell {
     }
 
     private func setupView() {
-        let subviews = [authorLabel, postImageView, descriptionLabel, likesLabel, viewsLabel]
+        let subviews = [authorLabel, postImageView, likeButton, descriptionLabel, likesLabel, viewsLabel]
         subviews.forEach({ self.contentView.addSubview($0)})
 
         authorLabel.snp.makeConstraints { make in
@@ -106,8 +132,15 @@ final class PostTableViewCell: UITableViewCell {
             make.width.height.equalTo(UIScreen.main.bounds.width)
         }
 
-        descriptionLabel.snp.makeConstraints { make in
+        likeButton.snp.makeConstraints { make in
             make.top.equalTo(postImageView.snp_bottomMargin).offset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.height.equalTo(40)
+            make.width.equalTo(45)
+        }
+
+        descriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(likeButton.snp_bottomMargin).offset(16)
             make.leading.trailing.equalToSuperview().inset(16)
             make.bottom.equalTo(likesLabel.snp_topMargin).offset(-16)
         }

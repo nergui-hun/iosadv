@@ -14,6 +14,10 @@ final class SavedTableViewCell: UITableViewCell {
 
     // MARK: - Values
 
+    lazy var tableView = self.superview as! UITableView
+    lazy var indexPath = tableView.indexPath(for: self)
+    lazy var row = indexPath?.row
+
     var viewModel: SavedPostsCellVM? {
         willSet(viewModel) {
             guard let viewModel = viewModel else {
@@ -54,6 +58,15 @@ final class SavedTableViewCell: UITableViewCell {
         return label
     }()
 
+    lazy var likeButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "heart")?.withTintColor(.black, renderingMode: .alwaysOriginal), for: .normal)
+        button.setBackgroundImage(UIImage(systemName: "heart.fill")?.withTintColor(.red, renderingMode: .alwaysTemplate), for: .selected)
+        button.addTarget(self, action: #selector(unlikeAction), for: .touchUpInside)
+        button.isSelected = true
+        return button
+    } ()
+
     private let likesLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -84,6 +97,18 @@ final class SavedTableViewCell: UITableViewCell {
 
     // MARK: - Methods
 
+    @objc func unlikeAction() {
+
+        guard let viewModel = viewModel else {
+            return
+        }
+
+            let post = CoreDataManager.shared.posts[indexPath!.row]
+            CoreDataManager.shared.deletePost(post: post)
+
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+    }
+
     func set(post: Post) {
         self.authorLabel.text = post.author
         self.postImageView.image = UIImage(named: post.image)
@@ -93,7 +118,7 @@ final class SavedTableViewCell: UITableViewCell {
     }
 
     private func setupView() {
-        let subviews = [authorLabel, postImageView, descriptionLabel, likesLabel, viewsLabel]
+        let subviews = [authorLabel, postImageView, likeButton, descriptionLabel, likesLabel, viewsLabel]
         subviews.forEach({ self.contentView.addSubview($0)})
 
         authorLabel.snp.makeConstraints { make in
@@ -106,8 +131,15 @@ final class SavedTableViewCell: UITableViewCell {
             make.width.height.equalTo(UIScreen.main.bounds.width)
         }
 
-        descriptionLabel.snp.makeConstraints { make in
+        likeButton.snp.makeConstraints { make in
             make.top.equalTo(postImageView.snp_bottomMargin).offset(16)
+            make.leading.equalToSuperview().offset(16)
+            make.height.equalTo(40)
+            make.width.equalTo(45)
+        }
+
+        descriptionLabel.snp.makeConstraints { make in
+            make.top.equalTo(likeButton.snp_bottomMargin).offset(16)
             make.leading.trailing.equalToSuperview().inset(16)
             make.bottom.equalTo(likesLabel.snp_topMargin).offset(-16)
         }

@@ -74,6 +74,7 @@ extension SavedViewController: UITableViewDelegate, UITableViewDataSource {
 
             let post = CoreDataManager.shared.posts[indexPath.row]
             CoreDataManager.shared.deletePost(post: post)
+        
             tableView.deleteRows(at: [indexPath], with: .fade)
     }
 
