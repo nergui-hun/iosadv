@@ -23,8 +23,8 @@ final class AppCoordinator: AppCoordinatorProtocol {
     }
 
     func startApp() {
-        let profileCoordinator = ProfileCoordinator(window: self.window, parentCoordinator: self)
-        profileCoordinator.openProfile()
+        //let profileCoordinator = ProfileCoordinator(window: self.window, parentCoordinator: self)
+        //profileCoordinator.openProfile()
         self.window?.rootViewController = tabbar
     }
 }
