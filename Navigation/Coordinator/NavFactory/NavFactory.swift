@@ -13,6 +13,7 @@ final class NavFactory {
         case feed
         case profile
         case saved
+        case map
     }
 
     let navCon: UINavigationController
@@ -27,20 +28,23 @@ final class NavFactory {
 
     func startModule() {
 
-        let controller: UIViewController
+        let vc: UIViewController
 
         switch tab {
-        case .feed:
-            controller = FeedViewController()
-            navCon.tabBarItem.title = "Feed"
-        case .profile:
-            controller = ProfileViewController(viewModel: profileVM)
-            navCon.tabBarItem.title = "Profile"
-        case .saved:
-            controller = SavedViewController()
-            navCon.tabBarItem.title = "Saved"
-        }
+            case .feed:
+                vc = FeedViewController()
+                navCon.tabBarItem.title = "Feed"
+            case .profile:
+                vc = ProfileViewController(viewModel: profileVM)
+                navCon.tabBarItem.title = "Profile"
+            case .saved:
+                vc = SavedViewController()
+                navCon.tabBarItem.title = "Saved"
+            case .map:
+                vc = MapViewController()
+            navCon.tabBarItem.title = "Map"
+            }
 
-        navCon.setViewControllers([controller], animated: true)
+            navCon.setViewControllers([vc], animated: true)
     }
 }

@@ -14,6 +14,7 @@
 		8D35FD6F282425600016BE52 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D35FD6E282425600016BE52 /* PhotosViewController.swift */; };
 		8D35FD71282427310016BE52 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D35FD70282427310016BE52 /* Photo.swift */; };
 		8D37BFF229E3A39C004092FC /* SavedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D37BFF129E3A39C004092FC /* SavedTableViewCell.swift */; };
+		8D5DF4152A33C28D00D8A246 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DF4142A33C28D00D8A246 /* MapViewController.swift */; };
 		8D5EA0E82896EC3400709B11 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0E72896EC3400709B11 /* AppCoordinator.swift */; };
 		8D5EA0EA2896EEAE00709B11 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0E92896EEAE00709B11 /* MainTabBarViewController.swift */; };
 		8D5EA0EC2896EFE400709B11 /* NavFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0EB2896EFE400709B11 /* NavFactory.swift */; };
@@ -92,6 +93,7 @@
 		8D35FD6E282425600016BE52 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		8D35FD70282427310016BE52 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		8D37BFF129E3A39C004092FC /* SavedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTableViewCell.swift; sourceTree = "<group>"; };
+		8D5DF4142A33C28D00D8A246 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		8D5EA0E72896EC3400709B11 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		8D5EA0E92896EEAE00709B11 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		8D5EA0EB2896EFE400709B11 /* NavFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavFactory.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				8DECB67327EBBAB90053D6DF /* InfoViewController.swift */,
 				8D2C4A67281B9D8E00E5C8A5 /* ProfileTableHeaderView.swift */,
 				8D5EA0E92896EEAE00709B11 /* MainTabBarViewController.swift */,
+				8D5DF4142A33C28D00D8A246 /* MapViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D5DF4152A33C28D00D8A246 /* MapViewController.swift in Sources */,
 				8D5EA0EC2896EFE400709B11 /* NavFactory.swift in Sources */,
 				8D5EA0F328971EAC00709B11 /* CustomButton.swift in Sources */,
 				8DFE67A929B4309A00B46E49 /* ProfileVM.swift in Sources */,
