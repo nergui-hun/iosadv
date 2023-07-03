@@ -33,16 +33,16 @@ final class NavFactory {
         switch tab {
             case .feed:
                 vc = FeedViewController()
-                navCon.tabBarItem.title = "Feed"
+                navCon.tabBarItem.title = String(localized: "feed-title-localizable")
             case .profile:
                 vc = ProfileViewController(viewModel: profileVM)
-                navCon.tabBarItem.title = "Profile"
+                navCon.tabBarItem.title = String(localized: "profile-title-localizable")
             case .saved:
                 vc = SavedViewController()
-                navCon.tabBarItem.title = "Saved"
+            navCon.tabBarItem.title = String(localized: "saved-title-localizable")
             case .map:
                 vc = MapViewController()
-            navCon.tabBarItem.title = "Map"
+            navCon.tabBarItem.title = String(localized: "map-title-localizable")
             }
 
             navCon.setViewControllers([vc], animated: true)

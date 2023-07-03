@@ -72,7 +72,7 @@ final class ProfileHeaderView: UIView {
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.tintColor = .white
-        button.setTitle("Show status", for: .normal)
+        button.setTitle(String(localized: "show-status-localizable"), for: .normal)
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return button
     }()
@@ -164,9 +164,9 @@ final class ProfileHeaderView: UIView {
     @objc func buttonPressed(_ sender: UIButton!) {
 
         let statusButtonTitle: String = sender.currentTitle!
-        if(statusButtonTitle == "Show status") {
+        if(statusButtonTitle == String(localized: "show-status-localizable")) {
 
-            sender.setTitle("Set status", for: .normal)
+            sender.setTitle(String(localized: "set-status-localizable"), for: .normal)
             self.statusTextField.isHidden = false
             statusTextField.text = statusLabel.text
             self.statusButtonTopConstraint?.update(offset: 40)
@@ -174,9 +174,9 @@ final class ProfileHeaderView: UIView {
 
         } else {
             statusLabel.text = statusTextField.text
-            sender.setTitle("Show status", for: .normal)
+            sender.setTitle(String(localized: "show-status-localizable"), for: .normal)
             self.endEditing(true)
-            self.setStatusButton.setTitle("Show status", for: .normal)
+            self.setStatusButton.setTitle(String(localized: "show-status-localizable"), for: .normal)
             statusButtonTopConstraint?.update(offset: 20)
             statusTextField.isHidden = true
         }

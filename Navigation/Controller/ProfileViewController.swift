@@ -54,7 +54,6 @@ final class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Profile"
         self.navigationController?.navigationBar.isHidden = true
         
         setupView()

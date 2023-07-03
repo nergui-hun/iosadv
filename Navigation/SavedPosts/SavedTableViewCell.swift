@@ -27,8 +27,8 @@ final class SavedTableViewCell: UITableViewCell {
             authorLabel.text = viewModel.author
             descriptionLabel.text = viewModel.postText
             postImageView.image = UIImage(named: viewModel.image)
-            likesLabel.text = "Likes: \(viewModel.likes)"
-            viewsLabel.text = "Views: \(viewModel.views)"
+            likesLabel.text = "\(String(localized: "likes-localizable")) \(viewModel.likes)"
+            viewsLabel.text = "\(String(localized: "views-localizable")) \(viewModel.views)"
         }
     }
 
