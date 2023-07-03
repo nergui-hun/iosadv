@@ -40,8 +40,8 @@ final class PhotosViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Photo Gallery"
-        self.navigationController?.navigationBar.topItem?.backButtonTitle = "Back"
+        title = String(localized: "photoGallery-localizable")
+        self.navigationController?.navigationBar.topItem?.backButtonTitle = String(localized: "back-localizable")
         self.navigationController?.navigationBar.tintColor = .systemBlue
         self.navigationController?.navigationBar.isHidden = false
 

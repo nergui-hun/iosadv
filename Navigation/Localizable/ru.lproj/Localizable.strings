@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  Navigation
+
+  Created by M M on 7/2/23.
+  
+*/
+"profile-title-localizable" = "Профиль";
+"feed-title-localizable" = "Лента";
+"saved-title-localizable" = "Избранное";
+"map-title-localizable" = "Карта";
+"postButton-localizable" = "Опубликовать";
+"anotherPostButton-localizable" = "Тоже опубликовать";
+"show-status-localizable" = "Показать статус";
+"set-status-localizable" = "Установить статус";
+"photoGallery-localizable" = "Фотогалерея";
+"back-localizable" = "Назад";
+"photos-localizable" = "Фото";
+"likes-localizable" = "Лайков: ";
+"views-localizable" = "Просмотров: ";

@@ -1,0 +1,10 @@
+/* 
+  InfoPlist (Russian).strings
+  Navigation
+
+  Created by M M on 7/2/23.
+  
+*/
+
+NSLocationWhenInUseUsageDescription = "Пожалуйста разрешите показывать локации";
+NSLocationAlwaysUsageDescription = "Пожалуйста разрешите показывать локации";

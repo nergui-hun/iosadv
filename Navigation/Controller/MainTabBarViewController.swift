@@ -34,7 +34,6 @@ final class MainTabBarViewController: UITabBarController {
 
     private func setControllers() {
         viewControllers = [
-            mapVC.navCon,
             feedVC.navCon,
             profileVC.navCon
         ]

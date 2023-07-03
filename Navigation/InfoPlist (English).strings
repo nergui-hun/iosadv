@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  Navigation
+
+  Created by M M on 7/2/23.
+  
+*/
+NSLocationWhenInUseUsageDescription = "Please allow to see current location";
+NSLocationAlwaysUsageDescription = "Please allow to see current location";

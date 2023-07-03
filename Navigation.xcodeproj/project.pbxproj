@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F40C4F91273E4E0D2576C44 /* Pods_Navigation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9965CB838CEA317FCB3B7CDB /* Pods_Navigation.framework */; };
+		8D0CCE752A51AF08004599C8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D0CCE772A51AF08004599C8 /* Localizable.strings */; };
 		8D1279E9281C76D300CAD3DB /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1279E8281C76D300CAD3DB /* PostTableViewCell.swift */; };
 		8D2C4A68281B9D8E00E5C8A5 /* ProfileTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2C4A67281B9D8E00E5C8A5 /* ProfileTableHeaderView.swift */; };
 		8D35FD6D2823E4B50016BE52 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D35FD6C2823E4B50016BE52 /* PhotosTableViewCell.swift */; };
@@ -15,6 +16,8 @@
 		8D35FD71282427310016BE52 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D35FD70282427310016BE52 /* Photo.swift */; };
 		8D37BFF229E3A39C004092FC /* SavedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D37BFF129E3A39C004092FC /* SavedTableViewCell.swift */; };
 		8D5DF4152A33C28D00D8A246 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5DF4142A33C28D00D8A246 /* MapViewController.swift */; };
+		8D5DF4252A51AB8200D8A246 /* InfoPlist (English).strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D5DF4242A51AB8200D8A246 /* InfoPlist (English).strings */; };
+		8D5DF4272A51ACAC00D8A246 /* InfoPlist (Russian).strings in Resources */ = {isa = PBXBuildFile; fileRef = 8D5DF4262A51ACAC00D8A246 /* InfoPlist (Russian).strings */; };
 		8D5EA0E82896EC3400709B11 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0E72896EC3400709B11 /* AppCoordinator.swift */; };
 		8D5EA0EA2896EEAE00709B11 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0E92896EEAE00709B11 /* MainTabBarViewController.swift */; };
 		8D5EA0EC2896EFE400709B11 /* NavFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5EA0EB2896EFE400709B11 /* NavFactory.swift */; };
@@ -86,6 +89,8 @@
 		320BF445884A07E83B23B2E5 /* Pods-Navigation.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Navigation.release.xcconfig"; path = "Target Support Files/Pods-Navigation/Pods-Navigation.release.xcconfig"; sourceTree = "<group>"; };
 		47AD6A59292134AC2926F3D0 /* Pods-StorageService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageService.debug.xcconfig"; path = "Target Support Files/Pods-StorageService/Pods-StorageService.debug.xcconfig"; sourceTree = "<group>"; };
 		524D0DD9B709CC980A9CBBA5 /* Pods-StorageService-StorageServiceTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StorageService-StorageServiceTests.debug.xcconfig"; path = "Target Support Files/Pods-StorageService-StorageServiceTests/Pods-StorageService-StorageServiceTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8D0CCE762A51AF08004599C8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8D0CCE782A51AF0B004599C8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8D1279E8281C76D300CAD3DB /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		8D2C4A65281B84CD00E5C8A5 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		8D2C4A67281B9D8E00E5C8A5 /* ProfileTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableHeaderView.swift; sourceTree = "<group>"; };
@@ -94,6 +99,8 @@
 		8D35FD70282427310016BE52 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		8D37BFF129E3A39C004092FC /* SavedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTableViewCell.swift; sourceTree = "<group>"; };
 		8D5DF4142A33C28D00D8A246 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		8D5DF4242A51AB8200D8A246 /* InfoPlist (English).strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = "InfoPlist (English).strings"; sourceTree = "<group>"; };
+		8D5DF4262A51ACAC00D8A246 /* InfoPlist (Russian).strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = "InfoPlist (Russian).strings"; sourceTree = "<group>"; };
 		8D5EA0E72896EC3400709B11 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		8D5EA0E92896EEAE00709B11 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		8D5EA0EB2896EFE400709B11 /* NavFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavFactory.swift; sourceTree = "<group>"; };
@@ -236,6 +243,14 @@
 			path = SavedCoordinator;
 			sourceTree = "<group>";
 		};
+		8D5DF4202A519FF900D8A246 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				8D0CCE772A51AF08004599C8 /* Localizable.strings */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
 		8D5EA0E32896EBF900709B11 /* AppCoordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +336,7 @@
 		8DB2A64B27E68DAD008D4B7C /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				8D5DF4202A519FF900D8A246 /* Localizable */,
 				8DFE679E29B1865000B46E49 /* SavedPosts */,
 				8DFE679829AF7AF200B46E49 /* ViewModel */,
 				8D5EA0F128971E5300709B11 /* CustomElements */,
@@ -334,6 +350,8 @@
 				8DB2A65527E68DAE008D4B7C /* Assets.xcassets */,
 				8DB2A65727E68DAE008D4B7C /* LaunchScreen.storyboard */,
 				8DB2A65A27E68DAE008D4B7C /* Info.plist */,
+				8D5DF4262A51ACAC00D8A246 /* InfoPlist (Russian).strings */,
+				8D5DF4242A51AB8200D8A246 /* InfoPlist (English).strings */,
 				8D71CD5129A9B00C0012C223 /* SceneDelegate.swift */,
 				8D2C4A65281B84CD00E5C8A5 /* Post.swift */,
 			);
@@ -475,6 +493,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 8DB2A64027E68DAD008D4B7C;
 			packageReferences = (
@@ -509,7 +528,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D0CCE752A51AF08004599C8 /* Localizable.strings in Resources */,
 				8DB2A65927E68DAE008D4B7C /* LaunchScreen.storyboard in Resources */,
+				8D5DF4252A51AB8200D8A246 /* InfoPlist (English).strings in Resources */,
+				8D5DF4272A51ACAC00D8A246 /* InfoPlist (Russian).strings in Resources */,
 				8DB2A65627E68DAE008D4B7C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -673,6 +695,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		8D0CCE772A51AF08004599C8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D0CCE762A51AF08004599C8 /* en */,
+				8D0CCE782A51AF0B004599C8 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		8DB2A65727E68DAE008D4B7C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -790,6 +821,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -851,6 +883,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -913,6 +946,9 @@
 				DEVELOPMENT_TEAM = LD73G7T3XA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Please allow to see current location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow to see current location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -942,6 +978,9 @@
 				DEVELOPMENT_TEAM = LD73G7T3XA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Please allow to see current location";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow to see current location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  Navigation
+
+  Created by M M on 7/2/23.
+  
+*/
+"profile-title-localizable" = "Profile";
+"feed-title-localizable" = "Feed";
+"saved-title-localizable" = "Saved";
+"map-title-localizable" = "Locations";
+"postButton-localizable" = "Post button";
+"anotherPostButton-localizable" = "Another post button";
+"show-status-localizable" = "Show status";
+"set-status-localizable" = "Set status";
+"photoGallery-localizable" = "Photo Gallery";
+"back-localizable" = "Back";
+"photos-localizable" = "Photos";
+"likes-localizable" = "Likes: ";
+"views-localizable" = "Views: ";

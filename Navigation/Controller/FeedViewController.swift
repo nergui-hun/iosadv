@@ -10,6 +10,12 @@ import UIKit
 
 final class FeedViewController: UIViewController {
 
+    // MARK: - Values
+    private enum LocalizedKeys: String {
+        case postButton = "postButton-localizable"
+    }
+
+
     // MARK: - View Elements
 
     let postButton: UIButton = {
@@ -21,7 +27,7 @@ final class FeedViewController: UIViewController {
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.tintColor = .white
-        button.setTitle("Post button", for: .normal)
+        button.setTitle(String(localized: "postButton-localizable"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(postButtonAction(_:)), for: .touchUpInside)
         return button
@@ -36,7 +42,7 @@ final class FeedViewController: UIViewController {
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.tintColor = .white
-        button.setTitle("Another post button", for: .normal)
+        button.setTitle(String(localized: "anotherPostButton-localizable"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(postButtonAction(_:)), for: .touchUpInside)
         return button
@@ -60,7 +66,7 @@ final class FeedViewController: UIViewController {
     }
     
     func setupView() {
-        title = "Feed"
+        title = String(localized: "feed-title-localizable")
         view.backgroundColor = .white
         view.layer.borderColor = UIColor.lightGray.cgColor
         view.layer.borderWidth = 0.5
