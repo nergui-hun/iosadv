@@ -11,9 +11,9 @@ import UIKit
 final class MainTabBarViewController: UITabBarController {
 
     private let feedVC = NavFactory(navCon: UINavigationController(), tab: .feed)
-    private let profileVC = NavFactory(navCon: UINavigationController(), tab: .profile)
-    private let savedVC = NavFactory(navCon: UINavigationController(), tab: .saved)
-    private let mapVC = NavFactory(navCon: UINavigationController(), tab: .map)
+        private let profileVC = NavFactory(navCon: UINavigationController(), tab: .profile)
+        private let savedVC = NavFactory(navCon: UINavigationController(), tab: .saved)
+        private let mapVC = NavFactory(navCon: UINavigationController(), tab: .map)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +29,12 @@ final class MainTabBarViewController: UITabBarController {
         feedVC.navCon.tabBarItem.image = UIImage(systemName: "house.fill")
         profileVC.navCon.tabBarItem.image = UIImage(systemName: "person.fill")
         savedVC.navCon.tabBarItem.image = UIImage(systemName: "bookmark.fill")
-        mapVC.navCon.tabBarItem.image = UIImage(systemName: "map.fill")
+       // mapVC.navCon.tabBarItem.image = UIImage(systemName: "map.fill")
     }
 
     private func setControllers() {
         viewControllers = [
-            mapVC.navCon,
+            //mapVC.navCon,
             feedVC.navCon,
             profileVC.navCon
         ]

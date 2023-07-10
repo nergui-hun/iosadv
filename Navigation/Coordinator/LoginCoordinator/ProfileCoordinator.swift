@@ -24,6 +24,12 @@ final class ProfileCoordinator {
         self.parentCoordinator = parentCoordinator
     }
 
+    func openLoginVC() {
+        let loginVM = LoginVM()
+        let controller = LogInViewController(coordinator: self, viewModel: loginVM)
+        self.navCon.pushViewController(controller, animated: true)
+    }
+
     func openProfile() {
         self.navCon.pushViewController(profileVC, animated: true)
     }
