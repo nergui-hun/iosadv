@@ -43,8 +43,26 @@ class LogInViewController: UIViewController {
     } ()
 
     private lazy var logInButton: CustomButton = {
-        let button = CustomButton(title: "Log In", titleColor: .white) {
+        let button = CustomButton(title: "Log In", titleColor: UIColor(red: 0.282, green: 0.582, blue: 0.800, alpha: 1)) {
             self.viewModel.changeState(.viewReady)
+        }
+        button.backgroundColor = UIColor(red: 0.282, green: 0.582, blue: 0.800, alpha: 0.1)
+        button.clipsToBounds = true
+        button.layer.cornerRadius = 10
+
+        if button.isSelected || button.isHighlighted || !button.isEnabled{
+            button.alpha = 0.8
+        } else {
+            button.alpha = 1
+        }
+
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
+    private lazy var biometricLoginButton: CustomButton = {
+        let button = CustomButton(title: "Log In With FaceID/TouchID", titleColor: .white) {
+            self.biometricLoginButtonTapped()
         }
         button.setBackgroundImage(UIImage(named: "blue_pixel.png"), for: .normal)
         button.clipsToBounds = true
@@ -126,6 +144,18 @@ class LogInViewController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
     }
 
+    @objc func biometricLoginButtonTapped() {
+        LocalAuthorizationService.shared.authorizeIfPossible { [weak self] result, error in
+            if result {
+                self?.viewModel.changeState(.viewReady)
+            }
+
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+
     @objc func redirectProfile() {
         let profileVM = ProfileVM()
         let profileViewController = ProfileViewController(viewModel: profileVM)
@@ -167,6 +197,7 @@ class LogInViewController: UIViewController {
         logInTextFieldsScrollView.addSubview(contentView)
         view.addSubview(logInTextFieldsScrollView)
         view.addSubview(logInButton)
+        view.addSubview(biometricLoginButton)
 
         view.addGestureRecognizer(tap)
     }
@@ -186,7 +217,12 @@ class LogInViewController: UIViewController {
             logInButton.topAnchor.constraint(equalTo: logInTextFieldsStackView.bottomAnchor, constant: 16),
             logInButton.leftAnchor.constraint(equalTo: logInTextFieldsStackView.leftAnchor),
             logInButton.rightAnchor.constraint(equalTo: logInTextFieldsStackView.rightAnchor),
-            logInButton.heightAnchor.constraint(equalToConstant: 50)
+            logInButton.heightAnchor.constraint(equalToConstant: 50),
+
+            biometricLoginButton.topAnchor.constraint(equalTo: logInButton.bottomAnchor, constant: 16),
+            biometricLoginButton.leftAnchor.constraint(equalTo: logInButton.leftAnchor),
+            biometricLoginButton.rightAnchor.constraint(equalTo: logInButton.rightAnchor),
+            biometricLoginButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 
