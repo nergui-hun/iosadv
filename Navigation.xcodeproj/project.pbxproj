@@ -36,6 +36,7 @@
 		8DB2A66127E71CB1008D4B7C /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB2A66027E71CB1008D4B7C /* FeedViewController.swift */; };
 		8DB2A66327E745A7008D4B7C /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB2A66227E745A7008D4B7C /* PostViewController.swift */; };
 		8DBE084028227F210005B573 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DBE083F28227F210005B573 /* UIView+Ext.swift */; };
+		8DCEE0012A5CCC71004189DA /* LocalNotificationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCEE0002A5CCC71004189DA /* LocalNotificationsService.swift */; };
 		8DE27EC129AA9C9D006D0B0E /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DE27EC029AA9C9D006D0B0E /* SavedViewController.swift */; };
 		8DEA4F4D287DAA6800ECB7BA /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8B52DE2871646C000ECFB2 /* StorageService.framework */; };
 		8DEA4F4E287DAA6800ECB7BA /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8B52DE2871646C000ECFB2 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -118,6 +119,7 @@
 		8DB2A66027E71CB1008D4B7C /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		8DB2A66227E745A7008D4B7C /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		8DBE083F28227F210005B573 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		8DCEE0002A5CCC71004189DA /* LocalNotificationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationsService.swift; sourceTree = "<group>"; };
 		8DE27EC029AA9C9D006D0B0E /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		8DECB67127EBBA1B0053D6DF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8DECB67327EBBAB90053D6DF /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				8DB2A65A27E68DAE008D4B7C /* Info.plist */,
 				8D71CD5129A9B00C0012C223 /* SceneDelegate.swift */,
 				8D2C4A65281B84CD00E5C8A5 /* Post.swift */,
+				8DCEE0002A5CCC71004189DA /* LocalNotificationsService.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				8DECB67427EBBAB90053D6DF /* InfoViewController.swift in Sources */,
 				8D5EA0EF28971C2400709B11 /* ProfileCoordinator.swift in Sources */,
 				8DFE67A329B1929100B46E49 /* SavedCoordinator.swift in Sources */,
+				8DCEE0012A5CCC71004189DA /* LocalNotificationsService.swift in Sources */,
 				8DB2A66127E71CB1008D4B7C /* FeedViewController.swift in Sources */,
 				8DB2A66327E745A7008D4B7C /* PostViewController.swift in Sources */,
 				8D35FD6D2823E4B50016BE52 /* PhotosTableViewCell.swift in Sources */,
@@ -913,6 +917,9 @@
 				DEVELOPMENT_TEAM = LD73G7T3XA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow to see current location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -942,6 +949,9 @@
 				DEVELOPMENT_TEAM = LD73G7T3XA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Navigation/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Please allow to see current location";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

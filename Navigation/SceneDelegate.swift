@@ -19,5 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = UIWindow(windowScene: scene)
             self.appCoordinator = AppCoordinator(window: window)
             appCoordinator?.startApp()
+        
+        LocalNotificationsService.shared.registerForLatestUpdatesIfPossible()
         }
+
+    
 }
